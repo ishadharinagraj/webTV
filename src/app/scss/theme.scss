@@ -1,0 +1,837 @@
+@import url(../css/tokens.css);
+@import 'utilities/_variables';
+@import 'utilities/_mixins';
+body{
+    &:not(.light){
+        @include scrollbar(var(--md-sys-color-on-surface-dark), var(--md-ref-palette-primary50));
+        background-color: var(--md-sys-color-background-dark);
+        .mainHeader{
+            .brandName{
+                img, svg{
+                    path{
+                        &:last-child{
+                            fill: var(--md-ref-palette-primary50);
+                        }
+                    }
+                }
+            }
+            .mainMenu{
+                a{
+                    color: $white;
+                    border-bottom:  4px solid transparent;
+                    &:hover{
+                        &:not(.active){
+                            color: rgba($white, 60%);
+                        }
+                    }
+                    &.active{
+                        border-bottom-color:var(--md-ref-palette-primary50);
+                    }
+                }
+            }
+        }
+        .profileDrop{
+            .profileOption{
+                background-color: var(--md-sys-color-surface-dark);
+                box-shadow: 0px 0px 60px 0px #0E1323;
+                .head{
+                    color: $white;
+                }
+                >.text{
+                    color: $white;
+                    a{
+                        color: $white;
+                    }
+                }
+                >.widget{
+                    span{
+                        b{
+                            color: var(--md-ref-palette-neutral90);
+                        }
+                    }
+                }
+                .widget{
+                    background-color: var(--md-sys-color-on-surface-dark);
+                    color: $white;
+                    // border: transparent solid 2px;
+                    &:hover{
+                        // border-color: $white;
+                        background-color: var(--md-ref-palette-primary50);
+                    }
+                }
+            }
+        }
+        .liveTv{
+            >.panel{
+                .pHead{
+                    border-bottom: var(--md-sys-color-on-surface-dark) solid 1px;
+                    .h5{
+                        color: $white;
+                    }
+                    .controls{
+                        >svg{
+                            path{
+                                fill: var(--md-sys-color-on-surface-dark);
+                            }
+                        }
+                        input{
+                            color: var(--md-sys-color-on-surface-dark);
+                            background-color: transparent;
+                            border: var(--md-sys-color-on-surface-dark) solid 2px;
+                            @include placeholder(var(--md-sys-color-on-surface-dark));
+                        }
+                    }
+                }
+                &.tvCategory{
+                    background-color: var(--md-sys-color-surface-dark);
+                    .pBody{
+                        >a{
+                            border: transparent solid 1px;
+                            color: $white;
+                            &:hover, &.active{
+                                background-color: var(--md-ref-palette-primary50);
+                                border-color: var(--md-ref-palette-primary50);
+                            }
+                        }
+                    }
+                }
+                &.tvList{
+                    background-color: var(--md-sys-color-surface-dark);
+                    .pBody{
+                        .list{
+                            &:before{
+                                color: $white;
+                            }
+                            .channelList{
+                                .info{
+                                    color: $white;
+                                    a{
+                                        color: $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.steamDetail{    
+                    .videoPlay{
+                        background-color: var(--md-ref-palette-secondary5);
+                    }
+                    >.panel{
+                        background-color: var(--md-sys-color-surface-dark);
+                        .pBody{
+                            span{
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .login{
+            >.terms{
+                color: var(--md-ref-palette-neutral90);
+                a{
+                    color: var(--md-ref-palette-neutral90);
+                }
+            }
+            .loginInner{
+                border: var(--md-sys-color-outline-variant-dark) solid 1px;
+            }
+            .infoSlide{
+                .item{
+                    .h3{
+                        color: $white;
+                    }
+                }
+                .owl-dots{
+                    button{
+                        background-color:var(--md-sys-color-on-surface-dark);
+                        &.active{
+                            background-color: var(--md-ref-palette-primary50);
+                        }
+                    }
+                }
+            }
+            .loginForm{
+                background-color: var(--md-sys-color-surface-dark);
+                .formGroup{
+                    .showPassword{
+                        path{
+                            fill: var(--md-sys-color-outline-variant-dark);
+                        }
+                    }
+                    >svg{
+                        path{
+                            fill: var(--md-sys-color-outline-variant-dark);
+                        }
+                    }
+                    input{
+                        color: var(--md-sys-color-on-surface-variant-dark);
+                        border: var(--md-sys-color-on-surface-dark) solid 2px;
+                        background-color: transparent;
+                        @include placeholder(var(--md-sys-color-on-surface-dark));
+                        &:focus{
+                            border-color: var(--md-sys-color-outline-variant-dark);
+                        }
+                    }
+                }
+                .btn{
+                    background-color: var(--md-ref-palette-primary50);
+                }
+            }
+        }
+        .mainBanner{
+            .item{
+                .thumb{
+                    &:before, &:after{
+                        background: linear-gradient(to right,  rgba(#000000, 90%) 0%,rgba(#000000, 90%) 7%, rgba(#000000, 0%) 100%);
+                    }
+                    &:after{
+                        background: linear-gradient(to right,  rgba(#000000, 0%) 0%,rgba(#000000, 90%) 93%,rgba(#000000, 90%) 100%);
+                    }
+                    .effectGrad{
+                        &:before, &:after{
+                            background: linear-gradient(to bottom, #000000 0%,#000000 7%, rgba(#000000, 0%) 100%);
+                        }
+                        &:after{
+                            background: linear-gradient(to bottom,  rgba(#000000, 0%) 0%,#000000 93%,#000000 100%);
+                        }
+                    }
+                }
+                .info{
+                    .h2{
+                        color: $white;
+                    }
+                    .playInfo{
+                        color: $white;
+                        .date{
+                            background-color: #274542;
+                            color: #60E7BB;
+                        }
+                        .rating{
+                            background-color: var(--md-ref-palette-primary40);
+                        }
+                    }
+                    .text{
+                        color: $white;
+                    }
+                    .btnGroup{
+                        select{
+                            background-color: var(--md-ref-palette-primary30);
+                            color: #fff;
+                            border: var(--md-ref-palette-primary60) solid 2px;
+                            &:hover{
+                                border-color: $white;
+                                @include boxShadow(0px 0px 20px 0px rgba($white, 30%));
+                            }
+                        }
+                    }
+                }
+            }
+            .owl-dots{
+                button{
+                    background-color: var(--md-ref-palette-primary80) !important;
+                    &.active{
+                        background-color: var(--md-ref-palette-primary50) !important;
+                    }
+                }
+            }
+        }
+        .category{
+            .h3{
+                color: $white;
+            }
+            .item{
+                border: transparent solid 4px;
+                .caption{
+                    &:after{
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 63.02%);
+                    }
+                    >*{
+                        color: $white;
+                    }
+                    .control{
+                        .count{
+                            background-color: var(--md-ref-palette-primary50);
+                            color: $white;
+                        }
+                    }
+                    .h2{
+                        color: $white;
+                    }
+                }
+                &:hover{
+                    @include boxShadow(0px 0px 10px 0px rgba($white, 30%));
+                    border-color: $white;
+                }
+            }
+        }
+        .otherOptions{
+            a{
+                color: $white;
+            }
+        }
+        .castCrew{
+            .h3{
+                color: $white;
+            }
+            .item{
+                .thumb{ 
+                    border: 4px solid transparent;
+                }
+                .h4{
+                    color: $white;
+                }
+                &:hover{
+                    .thumb{
+                        @include boxShadow(0px 0px 30px rgba($white, 30%));
+                        border-color: $white;
+                    }
+                }
+            }
+        }
+        .profileSection{
+            >img, >svg{
+                path{
+                    &:last-child{
+                        fill: var(--md-ref-palette-primary40);
+                    }
+                }
+            }
+            .profileList{
+                a{
+                    color: $white;
+                    .thumb{
+                        background-color: rgba($white, 10%);
+                    }
+                    &.add{
+                        .thumb{
+                            background-color: var(--md-sys-color-on-surface-dark);
+                        }
+                        svg{
+                            circle{
+                                fill: var(--md-ref-palette-primary50);
+                            }
+                        }
+                    }
+                    &:hover{
+                        .thumb{
+                            // box-shadow: 0px 4px 30px 0px #B9B7FFB2;
+                            border: var(--md-ref-palette-primary50) solid 4px;
+                        }
+                    }
+                }
+            }
+        }
+        .seriesList{
+            .h3{
+                color: $white;
+                b{
+                    color: #676767;
+                }
+            }
+            .list{
+                border: transparent solid 2px;
+                &:hover{
+                    border-color: $white;
+                }
+                .listLink{
+                    color: $white;
+                }
+                .downloadBtn{
+                    background-color: var(--md-source);
+                    svg{
+                        path{
+                            fill: $white;
+                        }
+                    }
+                }
+                .info{
+                    .h4{
+                        color: $white;
+                    }
+                }
+            }
+        }
+        .splash{
+            >svg, img{
+                path{
+                    &:last-child{
+                        fill: var(--md-ref-palette-primary50);
+                    }
+                }
+            }
+            .playList{
+                a{
+                    border: solid var(--md-ref-palette-primary50) 2px;
+                    color: $white;
+                    &:hover{
+                        border-color: var(--md-sys-color-outline-variant-dark);
+                        background-color: var(--md-ref-palette-primary40);
+                    }
+                    span{
+                        &.thumb{
+                            background-color: var(--md-ref-palette-primary50);
+                        }
+                    }
+                }
+            }
+            >a{
+                color: var(--md-ref-palette-neutral90);
+            }
+        }
+    }
+    &.light{
+        @include scrollbar(var(--md-sys-color-on-surface-light), var(--md-ref-palette-primary50));
+        background-color: var(--md-sys-color-background-light);
+        .mainHeader{
+            .brandName{
+                img, svg{
+                    path{
+                        fill: var(--md-sys-color-surface-container-low-dark);
+                        &:last-child{
+                            fill: var(--md-ref-palette-primary40);
+                        }
+                    }
+                }
+            }
+            .mainMenu{
+                a{
+                    color: #000;
+                    border-bottom:  4px solid transparent;
+                    &:hover{
+                        &:not(.active){
+                            color: rgba(#000, 60%);
+                        }
+                    }
+                    &.search{
+                        svg{
+                            path, circle{
+                                fill: #000;
+                            }
+                        }
+                    }
+                    &.profileBtn{
+                        svg{
+                            >rect{
+                                fill: rgba(#000, 10%);
+                            }
+                        }
+                    }
+                    &.active{
+                        border-bottom-color:var(--md-source);
+                    }
+                }
+                .tabsList + a{
+                    svg{
+                        path{
+                            fill: #000;
+                        }
+                    }
+                }
+            }
+        }
+        .profileDrop{
+            .profileOption{
+                background-color: var(--md-sys-color-surface-light);
+                box-shadow: 0px 0px 60px 0px #0E1323;
+                .head{
+                    color: var(--md-sys-color-on-background-light);
+                }
+                >.text{
+                    color: var(--md-sys-color-on-background-light);
+                    a{
+                        color: var(--md-sys-color-on-background-light);
+                    }
+                }
+                >.widget{
+                    span{
+                        b{
+                            color: var(--md-sys-color-on-background-light);
+                        }
+                    }
+                }
+                .widget{
+                    background-color: var(--md-sys-color-on-surface-light);
+                    color: var(--md-sys-color-on-background-light);
+                    // border: transparent solid 2px;
+                    svg{
+                        >path{
+                            fill: var(--md-sys-color-on-background-light);
+                        }
+                    }
+                    &:hover{
+                        // border-color: $white;
+                        color: $white;
+                        background-color: var(--md-ref-palette-primary50);
+                        svg{
+                            >path{
+                                fill: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .liveTv{
+            >.panel{
+                .pHead{
+                    border-bottom:var(--md-sys-color-on-surface-light) solid 1px;
+                    .h5{
+                        color: var(--md-sys-color-on-background-light);
+                    }
+                    .controls{
+                        >svg{
+                            path{
+                                fill: var(--md-sys-color-on-surface-light);
+                            }
+                        }
+                        input{
+                            color: var(--md-sys-color-on-surface-light);
+                            background-color: transparent;
+                            border: var(--md-sys-color-on-surface-light) solid 2px;
+                            @include placeholder(var(--md-sys-color-on-surface-light));
+                        }
+                    }
+                }
+                &.tvCategory{
+                    background-color: var(--md-sys-color-surface-light);
+                    .pBody{
+                        >a{
+                            border: transparent solid 1px;
+                            color: var(--md-sys-color-on-background-light);
+                            &:hover, &.active{
+                                background-color: var(--md-ref-palette-primary50);
+                                border-color: var(--md-ref-palette-primary50);
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+                &.tvList{
+                    background-color:var(--md-sys-color-surface-light);
+                    .pBody{
+                        .list{
+                            &:before{
+                                color: var(--md-sys-color-on-background-light);
+                            }
+                            .channelList{
+                                .info{
+                                    color: var(--md-sys-color-on-background-light);
+                                    a{
+                                        color: var(--md-sys-color-on-background-light);
+                                    }
+                                }
+                            }
+                            .favourite{
+                                svg[width="24"]{
+                                    path{
+                                        fill: var(--md-sys-color-on-background-light);
+                                        stroke: var(--md-sys-color-on-background-light);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.steamDetail{    
+                    .videoPlay{
+                        background-color: var(--md-sys-color-surface-light);
+                    }
+                    >.panel{
+                        background-color: var(--md-sys-color-surface-light);
+                        .pBody{
+                            span{
+                                color: var(--md-sys-color-on-background-light);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .login{
+            >.terms{
+                color: var(--md-sys-color-on-background-light);
+                a{
+                    color: var(--md-sys-color-on-background-light);
+                }
+            }
+            .loginInner{
+                border: var(--md-sys-color-outline-variant-light) solid 1px;
+            }
+            .infoSlide{
+                .item{
+                    .h3{
+                        color: var(--md-sys-color-on-background-light);
+                    }
+                }
+                .owl-dots{
+                    button{
+                        background-color:var(--md-sys-color-on-surface-light);
+                        &.active{
+                            background-color: var(--md-ref-palette-primary50);
+                        }
+                    }
+                }
+            }
+            .loginForm{
+                background-color: var(--md-sys-color-surface-light);
+                .formGroup{
+                    .showPassword{
+                        path{
+                            fill: var(--md-sys-color-outline-variant-light);
+                        }
+                    }
+                    >svg{
+                        path{
+                            fill: var(--md-sys-color-outline-variant-light);
+                        }
+                    }
+                    input{
+                        color: var(--md-sys-color-on-surface-variant-light);
+                        border: var(--md-sys-color-on-surface-light) solid 2px;
+                        background-color: transparent;
+                        @include placeholder(var(--md-sys-color-on-surface-light));
+                        &:focus{
+                            border-color: var(--md-sys-color-outline-variant-light);
+                        }
+                    }
+                }
+                .btn{
+                    background-color: var(--md-sys-color-primary-light);
+                }
+            }
+        }
+        .mainBanner{
+            .item{
+                .thumb{
+                    &:before, &:after{
+                        background: linear-gradient(to right,  rgba(#ffffff, 90%) 0%,rgba(#ffffff, 90%) 7%, rgba(#ffffff, 0%) 100%);
+                    }
+                    &:after{
+                        background: linear-gradient(to right,  rgba(#ffffff, 0%) 0%,rgba(#ffffff, 90%) 93%,rgba(#ffffff, 90%) 100%);
+                    }
+                    .effectGrad{
+                        &:before, &:after{
+                            background: linear-gradient(to bottom, #ffffff 0%,#ffffff 7%, rgba(#ffffff, 0%) 100%);
+                        }
+                        &:after{
+                            background: linear-gradient(to bottom,  rgba(#ffffff, 0%) 0%,#ffffff 93%,#ffffff 100%);
+                        }
+                    }
+                }
+                .info{
+                    .h2{
+                        color: var(--md-sys-color-surface-container-low-dark);
+                    }
+                    .playInfo{
+                        color: var(--md-sys-color-surface-container-low-dark);
+                        .date{
+                            color: #274542;
+                            background-color: #60E7BB;
+                        }
+                        .rating{
+                            background-color: var(--md-ref-palette-primary40);
+                            color: $white;
+                        }
+                    }
+                    .text{
+                        color: var(--md-sys-color-surface-container-low-dark);
+                    }
+                    .btnGroup{
+                        select{
+                            color: #fff;
+                            background-color: var(--md-ref-palette-primary30);
+                            border: var(--md-ref-palette-primary60) solid 2px;
+                            &:hover{
+                                border-color: var(--md-sys-color-surface-container-low-dark);
+                                @include boxShadow(0px 0px 20px 0px rgba($white, 30%));
+                            }
+                        }
+                    }
+                }
+            }
+            .owl-dots{
+                button{
+                    background-color: $owlDots !important;
+                    &.active{
+                        background-color: var(--md-source) !important;
+                    }
+                }
+            }
+        }
+        .category{
+            .h3{
+                color: var(--md-sys-color-on-background-light);
+            }
+            .item{
+                border: transparent solid 4px;
+                .caption{
+                    &:after{
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 63.02%);
+                    }
+                    >*{
+                        color: $white;
+                    }
+                    .control{
+                        .count{
+                            background-color: var(--md-ref-palette-primary30);
+                            color: $white;
+                        }
+                    }
+                    .h2{
+                        color: $white;
+                    }
+                }
+                &:hover{
+                    @include boxShadow(0px 0px 10px 0px rgba($white, 30%));
+                    border-color: var(--md-ref-palette-primary50);
+                }
+            }
+        }
+        .otherOptions{
+            a{
+                color: $white;
+            }
+        }
+        .castCrew{
+            .h3{
+                color: var(--md-sys-color-on-background-light);
+            }
+            .item{
+                .thumb{ 
+                    border: 4px solid transparent;
+                }
+                .h4{
+                    color: var(--md-sys-color-on-background-light);
+                }
+                &:hover{
+                    .thumb{
+                        @include boxShadow(0px 0px 30px rgba($white, 30%));
+                        border-color: $white;
+                    }
+                }
+            }
+        }
+        .profileSection{
+            >img, >svg{
+                path{
+                    fill: var(--md-sys-color-on-background-light);
+                    &:last-child{
+                        fill: var(--md-ref-palette-primary50);
+                    }
+                }
+            }
+            .profileList{
+                a{
+                    color: var(--md-sys-color-on-background-light);
+                    .thumb{
+                        background-color: rgba(#575757, 10%);
+                    }
+                    &.add{
+                        .thumb{
+                            background-color: var(--md-sys-color-on-surface-light);
+                        }
+                        svg{
+                            circle{
+                                fill: var(--md-ref-palette-primary50);
+                            }
+                        }
+                    }
+                    &:hover{
+                        .thumb{
+                            // box-shadow: 0px 4px 30px 0px #B9B7FFB2;
+                            border: var(--md-ref-palette-primary50) solid 4px;
+                        }
+                    }
+                }
+            }
+        }
+        .seriesList{
+            .h3{
+                color: var(--md-sys-color-surface-container-low-dark);
+                b{
+                    color: #676767;
+                }
+            }
+            .list{
+                border: transparent solid 2px;
+                &:hover{
+                    border-color: var(--md-sys-color-surface-container-low-dark);
+                }
+                .listLink{
+                    color: var(--md-sys-color-surface-container-low-dark);
+                }
+                .downloadBtn{
+                    background-color: var(--md-source);
+                    svg{
+                        path{
+                            fill: $white;
+                        }
+                    }
+                }
+                .info{
+                    .h4{
+                        color: var(--md-sys-color-surface-container-low-dark);
+                    }
+                }
+            }
+        }
+        .splash{
+            >svg, img{
+                path{
+                    fill: var(--md-sys-color-on-background-light);
+                    &:last-child{
+                        fill: var(--md-ref-palette-primary50);
+                    }
+                }
+            }
+            .playList{
+                a{
+                    border: solid var(--md-ref-palette-primary50) 2px;
+                    color: var(--md-sys-color-on-background-light);
+                    &:hover{
+                        border-color: var(--md-sys-color-outline-variant-dark);
+                        background-color: var(--md-ref-palette-primary40);
+                        color: #ffffff;
+                    }
+                    span{
+                        &.thumb{
+                            background-color: var(--md-ref-palette-primary50);
+                        }
+                    }
+                }
+            }
+            >a{
+                color: var(--md-sys-color-on-background-light);
+            }
+        }
+    }
+}
+@media all and (max-width:1200px){
+    body{
+        &.light{
+            .tabsList{
+                background-color: var(--md-sys-color-on-surface-light) !important;
+                a{
+                    color: var(--md-ref-palette-neutral-variant50) !important;
+                    svg{
+                        path{
+                            fill: var(--md-ref-palette-neutral-variant50) !important;
+                        }
+                    }
+                    &.active{
+                        color: $white !important;
+                        svg{
+                            path{
+                                fill: $white !important;
+                                stroke: $white !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

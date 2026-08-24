@@ -1,0 +1,89 @@
+@import "../../app/css/tokens.css";
+
+.backdrop-loader {
+  background-color: rgba(13, 22, 34, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 999999;
+}
+
+.sexyLoaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.sexySpinner {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sexySpinnerRing {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  box-sizing: border-box;
+}
+
+.sexySpinnerRing.ring1 {
+  width: 100%;
+  height: 100%;
+  border-top-color: #6366f1;
+  border-right-color: #a855f7;
+  animation: spinGlowFast 1.1s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.4);
+}
+
+.sexySpinnerRing.ring2 {
+  width: 70%;
+  height: 70%;
+  border-bottom-color: #d946ef;
+  border-left-color: #38bdf8;
+  animation: spinGlowReverse 0.8s linear infinite;
+  box-shadow: 0 0 12px rgba(217, 70, 239, 0.4);
+}
+
+.sexySpinnerDot {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #a855f7, #d946ef);
+  border-radius: 50%;
+  box-shadow: 0 0 15px #d946ef;
+  animation: pulseCore 0.8s ease-in-out infinite alternate;
+}
+
+.sexyLoaderText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c084fc;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: pulseText 1s ease-in-out infinite alternate;
+}
+
+@keyframes spinGlowFast {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinGlowReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes pulseCore {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}

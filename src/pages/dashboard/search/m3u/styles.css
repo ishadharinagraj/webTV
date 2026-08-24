@@ -1,0 +1,347 @@
+@import "../../../../app/css/tokens.css";
+
+/* --- Modern Search Page Design System (M3U) --- */
+.searched-items {
+  min-height: 100vh !important;
+  background: #080c18 !important;
+  color: #ffffff !important;
+  padding: 95px 40px 60px 40px !important;
+}
+
+.searched-items .searched-items-container {
+  width: 100% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+/* Glassmorphism Search Input Container */
+.search-input-container {
+  width: 100% !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.search-input-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.search-input-icon {
+  position: absolute !important;
+  left: 20px !important;
+  color: #94a3b8 !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+.searched-items .search-input {
+  width: 100% !important;
+  padding: 16px 20px 16px 54px !important;
+  background: rgba(18, 24, 41, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 16px !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  outline: none !important;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.searched-items .search-input::placeholder {
+  color: #64748b !important;
+}
+
+.searched-items .search-input:focus {
+  border-color: #6366f1 !important;
+  background: rgba(26, 35, 60, 0.95) !important;
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Modern Pill Tabs Container */
+.tabs-container {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0 !important;
+  margin-top: 5px !important;
+}
+
+.tabs-container .tab {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 8px 18px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  cursor: pointer !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tabs-container .tab:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  transform: translateY(-2px) !important;
+}
+
+.tabs-container .tab.active {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  border-color: rgba(99, 102, 241, 0.6) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+}
+
+.tabs-container .tab .tab-title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.tabs-container .tab .tab-count {
+  padding: 2px 8px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+}
+
+.tabs-container .tab.active .tab-count {
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Results Grid System */
+.search-results-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  padding-top: 10px !important;
+}
+
+.search-results-grid .item {
+  position: relative !important;
+  width: 100% !important;
+  height: 240px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: #121829 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.search-results-grid .item:hover {
+  transform: translateY(-6px) scale(1.04) !important;
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35) !important;
+  z-index: 10 !important;
+}
+
+.search-results-grid .item .thumb {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+.search-results-grid .item .thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.3s ease !important;
+}
+
+.search-results-grid .item:hover .thumb img {
+  transform: scale(1.08) !important;
+}
+
+.search-results-grid .item .caption {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(8, 12, 24, 0.9) 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 12px !important;
+  z-index: 2 !important;
+}
+
+.search-results-grid .item .caption .control {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.search-results-grid .item .caption .control .count {
+  padding: 3px 8px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.92) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+  color: #fef08a !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.search-results-grid .item .caption .h2 {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.3 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* No Results Found */
+.no-data-found-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 80px 20px !important;
+  text-align: center !important;
+  gap: 16px !important;
+}
+
+.no-data-found-container img {
+  width: 120px !important;
+  height: 120px !important;
+  opacity: 0.7 !important;
+}
+
+.no-data-found-container h2 {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  color: #94a3b8 !important;
+}
+
+/* --- Netflix / Hotstar Style Hover Mini-Preview Card Portal --- */
+.hover-preview-card-portal {
+  animation: hoverCardFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  pointer-events: auto !important;
+}
+
+@keyframes hoverCardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.hover-card-inner {
+  width: 100% !important;
+  background: #141b2d !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95), 0 0 25px rgba(99, 102, 241, 0.3) !important;
+}
+
+.hover-card-thumb {
+  position: relative !important;
+  width: 100% !important;
+  height: 165px !important;
+  overflow: hidden !important;
+  background-color: #0b0f19 !important;
+}
+
+.hover-card-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.hover-card-thumb-grad {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, transparent 40%, #141b2d 100%) !important;
+  pointer-events: none !important;
+}
+
+.hover-card-body {
+  padding: 14px 16px 16px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  background: #141b2d !important;
+}
+
+.hover-card-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.hover-card-play-btn {
+  flex: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 9px 16px !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25) !important;
+}
+
+.hover-card-play-btn:hover {
+  background: #e2e8f0 !important;
+  transform: scale(1.02) !important;
+}
+
+.hover-card-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.hover-card-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+}
+
+.hover-card-tags {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.hover-tag.rating {
+  color: #fef08a !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.92) 100%) !important;
+  border: 1px solid rgba(245, 158, 11, 0.5) !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+}

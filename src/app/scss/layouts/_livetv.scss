@@ -1,0 +1,159 @@
+.liveTv{
+    padding:130px 100px 30px;
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+    >.panel{
+        width: calc(100% / 3 - 15px);
+        min-height: 600px;
+        .pHead{
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            .h5{
+                font-size: 24px;
+                font-weight: 500;
+            }
+            .controls{
+                min-width: 100%;
+                position: relative;
+                >svg{
+                    position: absolute;
+                    right: 14px;
+                    top: 0;
+                    width: 22px;
+                    bottom: 0;
+                    margin: auto;
+                }
+                input{
+                    height: 50px;
+                    width: 100%;
+                    padding: 0 45px 0 10px;
+                    font-size: 20px;
+                    position: relative;
+                    z-index: 1;
+                    @include borderRadius(6px);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+        &.tvCategory{
+            .pBody{
+                overflow-y: auto;
+                height: calc(100% - 80px);
+                >a{
+                    height: 80px;
+                    display: flex;
+                    padding: 0 30px;
+                    align-items: center;
+                    text-decoration: none !important;
+                    font-size: 30px;
+                }
+            }
+        }
+        &.tvList{
+            .pBody{
+                counter-reset: number;
+                overflow-y: auto;
+                padding-bottom: 30px;
+                height: calc(100% - 80px);
+                .list{
+                    padding:0 20px 0 0;
+                    margin-top: 30px;
+                    display: flex;
+                    position: relative;
+                    counter-increment: number;
+                    &:before{
+                        content: counter(number) ".";
+                        font-size: 20px;
+                        display: flex;
+                        align-items: center;
+                        width: 50px;
+                        justify-content: center;
+                    }
+                    .channelList{
+                        display: flex;
+                        .thumb{
+                            display: flex;
+                            width: 130px;
+                            height: 75px;
+                            img{
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                            }
+                        }
+                        .info{
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 15px;
+                            font-size: 18px;
+                            justify-content: space-between;
+                            a{
+                                display: flex;
+                                flex-direction: column;
+                            }
+                            strong{
+                                font-size: 22px;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                    a{
+                        text-decoration: none !important;
+                        &.favourite{
+                            position: absolute;
+                            top: 5px;
+                            right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+        &.steamDetail{
+            display: flex;
+            flex-direction: column;        
+            .videoPlay{
+                width: 100%;
+                min-height: 350px;
+                max-height: 350px;
+                margin-bottom: 20px;
+                video{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            >.panel{
+                height: calc(100% - 370px);
+                .pBody{
+                    overflow-y: auto;
+                    height: calc(100% - 80px);
+                    display: flex;
+                    flex-direction: column;
+                    padding: 10px 0;
+                    span{
+                        font-size: 20px;
+                        padding:0 25px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: block;
+                        min-height: 40px;
+                        max-height: 40px;
+                        line-height: 40px;
+                        b{
+                            font-weight: normal;
+                            margin-right: 20px;
+                        }
+                        &.active{
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

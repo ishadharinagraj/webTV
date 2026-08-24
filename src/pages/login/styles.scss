@@ -1,0 +1,80 @@
+@import "../../app/mixins.scss";
+@import "../../app/_variables.scss";
+// @import "../../app/main.css";
+@import "../../app/css/tokens.css";
+
+.login{
+    position: relative;
+    background-image: url('/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    p, h2, h1{
+            margin: 0;
+            padding: 0;
+        }
+    .error{
+        position: absolute;
+        bottom: -22px;
+        font-size: 14px;
+        right: 0;
+        color: rgb(226, 5, 5);
+    }
+    .modal-container{
+        background-color: red;
+    }
+  
+}
+
+.invalid-user-popup-login{        
+    background-color: var(--md-sys-color-surface-dark);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 5px;
+    .cross-icon{
+        border: 2px solid var(--md-sys-color-outline-variant-dark);
+        border-radius: 50%;
+        padding: 5px;
+        width: 50px;
+        height: 50px;
+        color: var(--md-sys-color-outline-variant-dark);
+    }
+    .invalid-title{
+        color: white;
+        font-size: 25px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .invalid-description{
+        margin-top: 4px;
+        color: white;
+        font-size: 17px;
+    }
+    .error-lines{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    .ok-btn{
+        // margin-top: 20px;
+        color: white;
+        background: var(--md-ref-palette-primary30);
+        border: none;
+        padding: 15px;
+        width: 95%;
+        border-radius: 3px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: .4s;
+        &:hover{
+            opacity: .6;
+            cursor: pointer;
+        }
+    }
+}

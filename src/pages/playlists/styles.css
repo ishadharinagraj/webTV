@@ -1,0 +1,1243 @@
+@import "../../app/css/tokens.css";
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 9;
+  flex-direction: column;
+  background-image: url("/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profileSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(10, 15, 29, 0.88) 0%, rgba(10, 15, 29, 0.75) 50%, rgba(10, 15, 29, 0.92) 100%);
+  z-index: 1;
+}
+
+.topRightMenuContainer {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  z-index: 10;
+}
+
+.topRightSettingsBtn {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(13, 17, 30, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.topRightSettingsBtn:hover {
+  background: rgba(99, 102, 241, 0.3);
+  border-color: #a855f7;
+  transform: scale(1.06) rotate(30deg);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.topRightSettingsBtn.active {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border-color: #ffffff;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+  transform: rotate(90deg);
+}
+
+.topRightSettingsBtn.managing {
+  border-color: #10b981;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.5);
+}
+
+.settingsGearIcon {
+  font-size: 26px !important;
+}
+
+.topRightDropdownMenu {
+  position: absolute;
+  top: 64px;
+  right: 0;
+  min-width: 210px;
+  background: rgba(13, 17, 30, 0.94);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(99, 102, 241, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  animation: dropdownFadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dropdownMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: transparent;
+  border: none;
+  color: #f1f5f9;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.dropdownMenuItem:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateX(-3px);
+}
+
+.playlistsHeader {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.playlistsTitle {
+  font-size: 38px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.8);
+}
+
+.playlistsSubtitle {
+  font-size: 16px;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 400;
+}
+
+.profileSection .ad-container, 
+.profileSection .ad-container-2 {
+  width: 10%;
+  height: auto;
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  z-index: 3;
+}
+
+.profileSection .ad-container-2 {
+  left: unset;
+  right: 10px;
+}
+
+.profileSection .profileList {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1100px;
+  width: 100%;
+  padding: 10px;
+  max-height: none;
+  overflow-y: visible;
+}
+
+.profileSection .profileList .single-profile,
+.profileSection .profileList a.add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profileSection .profileList .thumb {
+  width: 170px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: rgba(13, 17, 30, 0.5) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(99, 102, 241, 0.12);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.profileSection .profileList .single-profile:hover .thumb,
+.profileSection .profileList a.add:hover .thumb {
+  transform: translateY(-8px) scale(1.04);
+  border-color: #a855f7 !important;
+  box-shadow: 0 25px 55px rgba(168, 85, 247, 0.35), 0 0 30px rgba(168, 85, 247, 0.3) !important;
+}
+
+.premiumAvatarBadge {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.35), inset 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.netflixAvatarWrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.35), inset 0 -6px 14px rgba(0, 0, 0, 0.4);
+}
+
+.netflixAvatarWrapper svg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profileSection .profileList .single-profile:hover .netflixAvatarWrapper svg {
+  transform: scale(1.12);
+}
+
+.avatarInitial {
+  font-size: 64px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  font-family: system-ui, -apple-system, sans-serif;
+  user-select: none;
+}
+
+.addAvatarBadge {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profileSection .profileList a.add:hover .addAvatarBadge {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 12px 30px rgba(217, 70, 239, 0.6);
+}
+
+.addAvatarBadge .plusIcon {
+  font-size: 48px !important;
+  color: #ffffff !important;
+}
+
+.profileSection .profileList .single-profile .text,
+.profileSection .profileList a.add .text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 14px;
+  text-align: center;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease;
+}
+
+.profileSection .profileList .single-profile:hover .text,
+.profileSection .profileList a.add:hover .text {
+  color: #c084fc;
+}
+
+.profileSection .profileList .thumb .edit-delete-icons-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(10, 15, 29, 0.82);
+  backdrop-filter: blur(10px);
+  transition: opacity 0.3s ease;
+}
+
+.manageModeCornerBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px rgba(168, 85, 247, 0.6);
+  z-index: 4;
+}
+
+.actionChip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  width: 110px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.actionChip.editChip {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.actionChip.editChip:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.7);
+}
+
+.actionChip.deleteChip {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.actionChip.deleteChip:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.7);
+}
+
+.manageToolbarGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.manageAddBtn,
+.manageDoneBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.manageAddBtn {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.manageAddBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(168, 85, 247, 0.6);
+}
+
+.manageDoneBtn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.manageDoneBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(16, 185, 129, 0.6);
+}
+
+.profileSection .manage-profile-btn-container {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+  width: 100%;
+  margin-top: 36px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileSection .manage-profile-btn-container .manage-profile-btn {
+  cursor: pointer;
+  padding: 16px 36px;
+  min-width: 220px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%) !important;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  border: none !important;
+  letter-spacing: 0.03em;
+  outline: none;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4) !important;
+}
+
+.profileSection .manage-profile-btn-container .manage-profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.55) !important;
+  opacity: 0.95;
+}
+
+@media only screen and (max-width: 600px) {
+  .profileSection .manage-profile-btn-container {
+    height: 200px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    width: 70%;
+  }
+}
+@media (width: 667px) and (height: 375px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 667px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 80px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 684px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 736px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 734px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 760px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 740px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 30px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 80px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 915px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 25px !important;
+  }
+  .profileSection svg {
+    max-height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 50px !important;
+    margin-bottom: 5px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 40% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 800px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 15px !important;
+  }
+  .profileSection svg {
+    max-height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+    margin-bottom: 5px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 812px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 20px !important;
+  }
+  .profileSection svg {
+    max-height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+    margin-bottom: 10px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 25% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 780px) {
+  .profileSection {
+    padding-top: 1%;
+    overflow: hidden;
+    row-gap: 15px !important;
+  }
+  .profileSection svg {
+    max-height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+    margin-bottom: 5px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 80%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    padding: 0px !important;
+    height: 50vh !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 880px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 15px !important;
+  }
+  .profileSection svg {
+    max-height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+    margin-bottom: 5px;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 896px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 30px !important;
+  }
+  .profileSection svg {
+    max-height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (width: 932px) {
+  .profileSection {
+    padding-top: 2%;
+    overflow: hidden;
+    row-gap: 30px !important;
+  }
+  .profileSection svg {
+    max-height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 60px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}
+@media (max-width: 860px) and (orientation: landscape) {
+  .profileSection {
+    padding-top: 2%;
+    row-gap: 9px !important;
+  }
+  .profileSection svg {
+    height: 50px !important;
+  }
+  .profileSection .manage-profile-btn-container {
+    height: 40px !important;
+  }
+  .profileSection .manage-profile-btn-container .manage-profile-btn {
+    padding: 5px;
+    font-size: 13px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 100%;
+    width: 30% !important;
+  }
+  .profileSection .profileList {
+    row-gap: 10px !important;
+    padding: 0px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container {
+    -moz-column-gap: 3px !important;
+         column-gap: 3px !important;
+  }
+  .profileSection .profileList .thumb .edit-delete-icons-container img {
+    width: 35px;
+    height: 35px;
+  }
+  .profileSection .profileList a .text {
+    font-size: 15px;
+  }
+  .profileSection .profileList a .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList a .thumb svg {
+    height: 50px !important;
+  }
+  .profileSection .profileList .single-profile .text {
+    font-size: 15px;
+  }
+  .profileSection .profileList .single-profile .thumb {
+    height: 100px !important;
+    width: 100px !important;
+  }
+  .profileSection .profileList .single-profile .thumb svg {
+    height: 50px !important;
+  }
+  .edit-modal-container .heading p {
+    padding: 10px !important;
+  }
+  .edit-modal-container .login {
+    overflow: scroll;
+  }
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,624 @@
+@media all and (max-width:1500px){
+    .seriesList{
+        padding: 0 15px 100px;
+    }
+    .mainHeader{
+        padding: 15px 0 15px 15px;
+    }
+    .category{
+        padding-left: 0;
+        .h3{
+            margin-left: 15px !important;
+            font-size: 20px;
+        }
+        .owl-stage{
+            padding: 15px !important;
+        }
+    }
+    .castSlider{
+        padding-left: 0;
+        .h3{
+            margin-left: 15px !important;
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .owl-stage{
+            padding: 15px !important;
+        }
+    }
+    .mainBanner{
+        padding:0 15px 15px;
+        .item {
+            .info{
+                padding-left: 15px;
+                .h2{
+                    font-size: 50px;
+                }
+            }
+        }
+    }
+    .liveTv{
+        padding: 130px 20px 30px;
+    }
+}
+@media all and (max-width:1300px){
+    .mainHeader{
+        position: relative;
+    }
+    .liveTv{
+        padding: 0 20px 20px;
+        height: calc(100vh - 112px);
+        >.panel{
+            .pHead{
+                padding: 0 15px;
+                .controls{
+                    input{
+                        font-size: 16px;
+                    }
+                }
+            }
+            &.tvCategory{
+                max-width: 250px;
+                min-width: 250px;
+                .pBody{
+                    >a{
+                        font-size: 18px;
+                        height: 50px;
+                        padding: 0 15px;
+                    }
+                }
+            }
+            &.tvList{
+                max-width: 360px;
+                min-width: 360px;
+                margin-left: 15px;
+                .pBody{
+                    .list{
+                        margin-top: 20px;
+                        &:before{
+                            width: 40px;
+                            font-size: 16px;
+                        }
+                        .channelList{
+                            .thumb{
+                                width: 80px;
+                                height: 70px;
+                            }
+                            .info{
+                                font-size: 16px;
+                                margin-left: 8px;
+                                max-width: 190px;
+                                min-width: 190px;
+                                strong{
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.steamDetail{
+                width: calc(100% - 20px);
+                margin-left: 15px;
+                .videoPlay{
+                    margin-bottom: 15px;
+                }
+                >.panel{
+                    .pBody{
+                        span{
+                            min-height: 30px;
+                            max-height: 30px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (max-width:1200px){
+    body{
+        &:not(.noTabs){
+            padding-bottom: 100px !important;
+        }
+    }
+    .mainHeader{
+        .mainMenu{
+            a{
+                padding: 0px 15px;
+                &.search{
+                    span{
+                        display: none !important;
+                    }
+                    >svg{
+                        display: block;
+                        width: 24px;
+                    }
+                }
+            }
+            .tabsList{
+                position: fixed;
+                z-index: 99;
+                bottom: 0;
+                background-color: var(--md-sys-color-on-secondary-fixed-dark);
+                width: 100%;
+                left: 0;
+                display: flex;
+                a{
+                    width: 20%;
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 15px 0;
+                    height: 80px;
+                    border: none !important;
+                    font-weight: normal;
+                    font-size: 14px;
+                    justify-content: space-between;
+                    color: #4E5575 !important;
+                    svg{
+                        margin-bottom: 8px;
+                        display: block;
+                        path{
+                            fill: #4E5575 !important;
+                        }
+                    }
+                    &.active{
+                        color: $white !important;
+                        svg{
+                            path{
+                                fill: $white !important;
+                            }
+                        }
+                    }
+                }
+                ~ a{
+                    svg{
+                        width: 36px;
+                    }
+                }
+            }
+        }
+    }
+    .mainBanner{
+        >.item{
+            margin: 0 -15px;
+            .thumb{
+                &:before, &:after, .effectGrad{
+                    display: none;
+                }
+            }
+            .info{
+                position: relative;
+                bottom: 0;
+                padding: 15px;
+            }
+        }
+    }
+    .liveTv{
+        padding: 0 20px 0;
+        height: calc(100vh - 212px);
+        >.panel{
+            width: calc(100% / 3 - 15px);
+            min-height: 600px;
+            padding-bottom: 100px !important;
+            .pHead{
+                height: 50px;
+                padding: 0 10px;
+                .h5{
+                    font-size: 15px;
+                }
+                .controls{
+                    svg{
+                        width: 10px;
+                        right: 5px;
+                    }
+                    input{
+                        font-size: 12px;
+                        height: 30px;
+                        padding-right: 10px;
+                    }
+                }
+            }
+            .pBody{
+                height: calc(100% - 50px) !important;
+                padding-bottom: 10px !important;
+            }
+            &.tvCategory{
+                max-width: 180px;
+                min-width: 180px;
+                .pBody{
+                    >a{
+                        font-size: 13px;
+                        height: 30px;
+                    }
+                }
+            }
+            &.tvList{
+                min-width: 290px;
+                max-width: 290px;
+                padding: 0;
+                .pBody{
+                    .list{
+                        &:before{
+                            font-size: 10px;
+                        }
+                        .channelList{
+                            .thumb{
+                                width: 50px;
+                                height: 50px;
+                            }
+                            .info{
+                                font-size: 12px;
+                                max-width: 150px;
+                                min-width: 150px;
+                                a{
+                                    strong{
+                                        font-size: 14px;
+                                    }
+                                }
+                            }
+                        }
+                        .favourite{
+                            svg{
+                                width: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.steamDetail{
+                width: calc(100% - 500px);
+                .videoPlay{
+                    margin-bottom: 15px;
+                }
+                >.panel{
+                    .pBody{
+                        span{
+                            min-height: 30px;
+                            max-height: 30px;
+                            line-height: 30px;
+                            font-size: 12px;
+                            padding: 0 10px;
+                            b{
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media all and (max-width:991px){
+    .mainBanner{
+        .owl-carousel{
+            border: var(--md-ref-palette-primary40) solid 1px;
+            .item {
+                .thumb{
+                    height: 450px;
+                    img{
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+                    .effectGrad{
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba($secondary, 50%);
+                        z-index: 1;
+                        &:before, &:after{
+                            display: none;
+                        }
+                    }
+                    &:before, &:after{
+                        display: none;
+                    }
+                }
+                .info{
+                    padding: 0 15px;
+                    width: 100%;
+                    .h2{
+                        width: 100%;
+                        text-align: center;
+                        display: block;
+                        font-size: 40px;
+                    }
+                    .text{
+                        display: none;
+                    }
+                    .btnGroup{
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+        >.item{
+            .info{
+                display: flex;
+                flex-direction: column;
+                >.text{
+                    order: 4;
+                }
+                .h2{
+                    width: 100%;
+                    display: block;
+                    font-size: 40px;
+                }
+                .btnGroup{
+                    flex-wrap: wrap;
+                }
+            }
+        }
+        .owl-dots{
+            display: none;
+        }
+    }
+    .category {
+        .item {
+            .caption{
+                .info, .h2, &:after{
+                    display: none !important;
+                }
+            }
+        }
+    }
+    .login{
+        min-height: 100%;
+        justify-content: flex-start;
+        .loginInner{
+            flex-direction: column;
+            height: auto;
+            border: none;
+            align-items: center;
+            >.brand{
+                display: block;
+            }
+            .infoSlide{
+                width: 100%;
+                display: none;
+            }
+            .loginForm{
+                width: 100%;
+                background-color: transparent;
+                padding: 10px;
+                margin-top: 30px;
+            }
+        }
+    }
+    .liveTv{
+        >.panel{
+            &.tvCategory{
+                max-width: 140px;
+                min-width: 140px;
+            }
+            &.tvList{
+                min-width: 260px;
+                max-width: 260px;
+                padding: 0;
+            }
+            &.steamDetail{
+                width: calc(100% - 420px);
+                .videoPlay{
+                    min-height: 250px;
+                    max-height: 250px;
+                }
+                >.panel{
+                    height: calc(100% - 265px);
+                }
+            }
+        }
+    }
+}
+@media all and (max-width:768px){
+    .mainHeader{
+        .brandName {
+            img, svg{
+                width: 150px;
+                height: 50px;
+            }
+        }
+    }
+    .castCrew{
+        .item {
+            .h4{
+                font-size: 16px;
+            }
+        }
+    }
+    .mainBanner{
+        .owl-carousel{
+            .item {
+                .info {
+                    .h2{
+                        font-size: 30px;
+                    }
+                }
+            }
+        }
+        >.item{
+            .thumb{
+                min-height: 300px;
+                height: 300px;
+            }
+            .info{
+                display: flex;
+                flex-direction: column;
+                .text{
+                    font-size: 16px;
+                    line-height: 20px;
+                }
+                .btnGroup{
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    select{
+                        height: 45px;
+                        font-size: 16px;
+                        margin: 0 0 10px 0 !important;
+                    }
+                    .btn{
+                        &:not(:last-child){
+                            margin: 0 0 10px 0 !important;
+                        }
+                    }
+                }
+                .h2{
+                    font-size: 30px;
+                }
+                .playInfo{
+                    font-size: 14px;
+                    padding:10px 0;
+                    .rating, .date{
+                        height: 28px;
+                    }
+                }
+                >.text{
+                    margin: 10px 0 0 !important;
+                }
+            }
+        }
+    }
+    .category {
+        .item {
+            .caption{
+                padding: 10px;
+                .control{
+                    .count{
+                        width: 25px;
+                        height: 25px;
+                        @include borderRadius(4px);
+                    }
+                    a{
+                        svg{
+                            width: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .profileSection{
+        position: relative;
+        min-height: 100vh;
+        padding: 50px 0;
+        >img, >svg{
+            margin: 0 0 50px 0;
+            width: 250px;
+            height: 80px;
+            margin: 0;
+        }
+        .profileList{
+            a{
+                width: calc(50% - 30px);
+                margin:15px;
+                span{
+                    &.thumb{
+                        margin: 0 0 10px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .splash{
+        position: relative;
+        min-height: 100vh;
+        padding: 50px 15px;
+        >img, >svg{
+            margin:0;
+            min-width: 250px;
+            max-width: 250px;
+            max-height: 80px;
+            min-height: 80px;
+        }
+        .playList{
+            margin: 50px 0;
+            a{
+                min-width: 200px;
+                padding: 20px;
+
+            }
+        }
+    }
+    .seriesList{
+        padding: 0 15px 0;
+        .h3{
+            font-size: 20px;
+            margin: 0;
+            b{
+                font-size: 18px;
+            }
+        }
+        .list{
+            padding: 0;
+            margin-top: 20px;
+            border: none !important;
+            .downloadBtn{
+                width: 30px;
+                height: 30px;
+                right: 0;
+                top: 0;
+                svg{
+                    width: 18px;
+                }
+            }
+        }
+        .listLink{
+            .thumb{
+                width: 130px;
+                height: 90px;
+                svg{
+                    width: 60px;
+                }
+            }
+            .text{
+                font-size: 16px;
+                line-height: 24px;
+                height: 75px;
+                overflow: hidden;
+            }
+            .info{
+                margin-left: 10px;
+                .h4{
+                    font-size: 22px;
+                }
+                .rate{
+                    svg{
+                        width: 14px;
+                        height: 14px;
+                        margin-right: 4px;
+                    }
+                }
+                .dur{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    .profileDrop{
+        padding: 0;
+        .profileOption{
+            width: 100%;
+            overflow-y: auto;
+            .head{
+                display: flex;
+            }
+        }
+    }
+}
+@media all and (max-width:650px){
+    .liveTv{
+        flex-direction: column-reverse;
+        height: auto;
+        >.panel{
+            min-width: 100% !important;
+            max-width: 100% !important;
+            margin-left: 0 !important;
+            padding: 0 !important;
+            &:not(:last-child){
+                margin-top: 15px !important;
+            }
+        }
+    }
+}

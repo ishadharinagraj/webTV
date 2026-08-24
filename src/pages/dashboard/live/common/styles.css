@@ -1,0 +1,675 @@
+@import "../../../../app/css/tokens.css";
+
+/* --- Mockup-Matched Live TV Cinema Layout --- */
+
+.liveTv {
+  padding: 95px 40px 60px 40px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+  min-height: 100vh !important;
+  height: auto !important;
+  background: #080c18 !important;
+  color: #ffffff !important;
+}
+
+/* 1. Full-Width Top Video Player Stage */
+.liveTv > .panel.steamDetail {
+  width: 100% !important;
+  height: 540px !important;
+  background: #0b0f19 !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+  display: flex !important;
+  flex-direction: row !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.liveTv .videoPlay {
+  width: 100% !important;
+  height: 100% !important;
+  background: #000000 !important;
+  position: relative !important;
+}
+
+.liveTv > .panel.steamDetail > .panel {
+  width: 320px !important;
+  height: 100% !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+  background: rgba(14, 20, 36, 0.95) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+/* Stream Interrupted / Select Channel Container */
+.stream-interrupted-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 45%, #141b2d 0%, #080c18 100%);
+}
+
+.stream-interrupted-card {
+  background: rgba(18, 24, 38, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  border-radius: 22px;
+  padding: 40px 48px;
+  max-width: 460px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
+}
+
+.stream-interrupted-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f87171;
+}
+
+.stream-interrupted-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.stream-interrupted-card p {
+  font-size: 13.5px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.stream-interrupted-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #6366f1;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+
+.stream-interrupted-btn:hover {
+  background: #4f46e5;
+  transform: scale(1.04);
+}
+
+/* 2. Bottom Deck Container: Categories (Left) + Channel Grid (Right) */
+.liveTv-bottom-container {
+  display: flex !important;
+  gap: 32px !important;
+  width: 100% !important;
+}
+
+/* Left Categories Panel (Pills style) */
+.liveTv > .panel.tvCategory {
+  width: 280px !important;
+  flex-shrink: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.liveTv > .panel.tvCategory .pHead {
+  height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+.liveTv > .panel.tvCategory .pHead .h5 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.3px !important;
+  margin: 0 !important;
+}
+
+.liveTv > .panel.tvCategory .pBody {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  overflow-y: auto !important;
+  max-height: 600px !important;
+}
+
+.liveTv > .panel.tvCategory .pBody > a {
+  height: 48px !important;
+  border-radius: 24px !important;
+  padding: 0 20px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #cbd5e1 !important;
+  transition: all 0.2s ease !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  text-decoration: none !important;
+}
+
+.liveTv > .panel.tvCategory .pBody > a:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+.liveTv > .panel.tvCategory .pBody > a.active {
+  background: rgba(99, 102, 241, 0.15) !important;
+  border: 1.5px solid #6366f1 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25) !important;
+}
+
+.liveTv .live-stream-count {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #94a3b8 !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+}
+
+.liveTv > .panel.tvCategory .pBody > a.active .live-stream-count {
+  background: #6366f1 !important;
+  color: #ffffff !important;
+}
+
+/* Right Channel Deck Panel */
+.liveTv > .panel.tvList {
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.liveTv > .panel.tvList .pHead {
+  height: auto !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.liveTv > .panel.tvList .pHead .h5 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.3px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.liveTv .clear-all-btn {
+  background: none !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease !important;
+}
+
+.liveTv .clear-all-btn:hover {
+  color: #ef4444 !important;
+}
+
+.liveTv > .panel.tvList .pBody {
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+  gap: 18px !important;
+  overflow-y: auto !important;
+  max-height: 600px !important;
+  align-content: start !important;
+}
+
+.liveTv > .panel.tvList .pBody .list {
+  position: relative !important;
+  padding: 0 !important;
+  border-radius: 18px !important;
+  background: #0f1524 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.liveTv > .panel.tvList .pBody .list:hover {
+  background: #141c30 !important;
+  border-color: rgba(99, 102, 241, 0.6) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(99, 102, 241, 0.2) !important;
+}
+
+.liveTv > .panel.tvList .pBody .list.active,
+.liveTv > .panel.tvList .pBody .list[style*="rgb(255, 255, 255, 0.1)"] {
+  border-color: #e50914 !important;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.4) !important;
+}
+
+.liveTv > .panel.tvList .pBody .list .channelList {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+}
+
+.liveTv > .panel.tvList .pBody .list .channelList .thumb {
+  width: 100% !important;
+  height: 135px !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  min-height: 135px !important;
+  max-height: 135px !important;
+  border-radius: 0 !important;
+  background: #080c18 !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  padding: 12px !important;
+}
+
+.liveTv > .panel.tvList .pBody .list .channelList .thumb img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.liveTv > .panel.tvList .pBody .list .channelList .info {
+  padding: 12px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.liveTv > .panel.tvList .pBody .list .channelList .info strong {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+}
+
+.liveTv .fav-and-delete {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  cursor: pointer !important;
+  z-index: 5 !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  padding: 6px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.liveTv .fav-and-delete svg {
+  transition: transform 0.2s ease !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.liveTv .fav-and-delete svg:hover {
+  transform: scale(1.15) !important;
+}
+
+.liveTv .loader-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6366f1 !important;
+}
+
+.liveTv .no-category-found {
+  text-align: center;
+  margin-top: 60px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* --- Category Selection Header Bar & Dropdown --- */
+.live-category-header-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: #0f1524 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 16px !important;
+  padding: 16px 24px !important;
+  width: 100% !important;
+}
+
+.category-title-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.live-category-heading {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.live-channel-count-badge {
+  background: rgba(99, 102, 241, 0.15) !important;
+  color: #818cf8 !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  padding: 4px 12px !important;
+  border-radius: 20px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+.category-dropdown-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.category-select-label {
+  font-size: 14px !important;
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+}
+
+.live-category-select {
+  background: #182238 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+  padding: 8px 36px 8px 14px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.live-category-select:hover,
+.live-category-select:focus {
+  border-color: #6366f1 !important;
+  background: #1e293b !important;
+}
+
+/* --- Live Channels Grid (Movie / Series Cards Design) --- */
+.live-channels-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  padding: 10px 0 !important;
+}
+
+.live-channels-grid .item {
+  position: relative !important;
+  width: 100% !important;
+  height: 240px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: #121829 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.live-channels-grid .item:hover {
+  transform: translateY(-6px) scale(1.04) !important;
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35) !important;
+  z-index: 10 !important;
+}
+
+.live-channels-grid .item .thumb {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #0d1322 !important;
+  padding: 16px !important;
+}
+
+.live-channels-grid .item .thumb img {
+  max-width: 100% !important;
+  max-height: 80% !important;
+  object-fit: contain !important;
+  transition: transform 0.3s ease !important;
+}
+
+.live-channels-grid .item:hover .thumb img {
+  transform: scale(1.08) !important;
+}
+
+.live-channels-grid .item .caption {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(8, 12, 24, 0.9) 100%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 12px !important;
+  z-index: 2 !important;
+}
+
+.live-channels-grid .item .caption .control {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.live-channels-grid .item .caption .control .count {
+  width: auto !important;
+  height: auto !important;
+  min-width: 32px !important;
+  padding: 3px 8px !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 41, 59, 0.92) 100%) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.5) !important;
+  color: #818cf8 !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+}
+
+.live-channels-grid .item .caption .h2 {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.3 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* --- Netflix / Hotstar Style Hover Mini-Preview Card Portal --- */
+.hover-preview-card-portal {
+  animation: hoverCardFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  pointer-events: auto !important;
+}
+
+@keyframes hoverCardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.hover-card-inner {
+  width: 100% !important;
+  background: #141b2d !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95), 0 0 25px rgba(99, 102, 241, 0.3) !important;
+}
+
+.hover-card-thumb {
+  position: relative !important;
+  width: 100% !important;
+  height: 165px !important;
+  overflow: hidden !important;
+  background-color: #0b0f19 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+}
+
+.hover-card-thumb img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.hover-card-thumb-grad {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, transparent 40%, #141b2d 100%) !important;
+  pointer-events: none !important;
+}
+
+.hover-card-body {
+  padding: 14px 16px 16px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  background: #141b2d !important;
+}
+
+.hover-card-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.hover-card-play-btn {
+  flex: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 9px 16px !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.25) !important;
+}
+
+.hover-card-play-btn:hover {
+  background: #e2e8f0 !important;
+  transform: scale(1.02) !important;
+}
+
+.hover-card-add-btn,
+.hover-card-fav-btn {
+  width: 38px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.hover-card-add-btn:hover,
+.hover-card-fav-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.05) !important;
+}
+
+.hover-card-fav-btn.active {
+  background: rgba(229, 9, 20, 0.25) !important;
+  border-color: rgba(229, 9, 20, 0.6) !important;
+}
+
+.hover-card-meta {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+
+.hover-card-title {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  line-height: 1.25 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
+}

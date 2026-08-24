@@ -1,0 +1,57 @@
+.splash{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    flex-direction: column;
+    padding: 50px 0;
+    overflow-y: auto;
+    >svg, img{
+        max-width: 450px;
+        min-width: 450px;
+        min-height: 150px;
+        max-height: 150px;
+    }
+    .playList{
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        a{
+            padding:40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 250px;
+            font-size: 20px;
+            font-weight: 400;
+            margin:20px;
+            text-decoration: none !important;
+            span{
+                &.thumb{
+                    width: 100px;
+                    height: 100px;
+                    @include borderRadius(100%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    svg{
+                        width: 55px !important;
+                    }
+                }
+                &:last-child{
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+    >a{
+        display: none;
+        text-decoration: none !important;
+        font-size: 20px;
+        text-align: center;
+    }
+}

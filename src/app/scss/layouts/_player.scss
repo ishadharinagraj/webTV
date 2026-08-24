@@ -1,0 +1,43 @@
+.playerView{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.flowplayer{
+    height: 100vh;
+    flowplayer-control{
+        &.fp-controls{
+            margin-bottom: 60px;
+        }
+    }
+    &.is-hovered, &.is-touched{
+        .otherOptions{
+            opacity: 1;
+        }       
+    }
+    &.is-starting{
+        .otherOptions{
+            visibility: hidden;
+        }
+    }
+}
+.otherOptions{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration: none !important;
+        font-size: 22px;
+        svg{
+            width: 24px;
+            max-height: 24px;
+            margin-right: 8px;
+        }
+    }
+}

@@ -1,0 +1,165 @@
+@import "../../../app/css/tokens.css";
+.login {
+  position: relative;
+  background-image: url("/login-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.login .error {
+  position: absolute;
+  bottom: -37px;
+  font-size: 14px;
+  right: 0;
+  color: red;
+}
+.login .loginForm {
+  row-gap: 5px;
+  justify-content: space-between;
+}
+.login .invalid-user-popup {
+  background-color: white;
+  z-index: 99999;
+  position: fixed;
+  transform: translateY(-50%);
+  padding: 40px;
+  padding-bottom: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(90, 90, 90);
+}
+.login .invalid-user-popup .cross-icon {
+  border: 2px solid red;
+  border-radius: 50%;
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+}
+.login .invalid-user-popup .invalid-title {
+  color: #595959;
+  font-size: 25px;
+  font-weight: 500;
+}
+.login .invalid-user-popup .ok-btn {
+  color: white;
+  background: #615DFC;
+  border: none;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+.login .invalid-user-popup .ok-btn:hover {
+  cursor: pointer;
+}
+.login .or-div {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login .or-div .verticalbar {
+  height: 1px;
+  background: white;
+  width: 25%;
+}
+.login .or-div .or-text {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.login .browser-btn {
+  color: white;
+  background-color: var(--md-source);
+}
+.login .browser-btn-container {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.login .browser-btn-container p {
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+.login .browser-btn-container label {
+  background: var(--md-source);
+  color: white;
+  padding: 15px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-right: 40px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.login .browser-btn-container label:hover {
+  opacity: 0.7;
+}
+.login .browser-btn-container label:active {
+  transform: scale(0.93);
+}
+.login .playlist-types-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.login .playlist-types-container p {
+  color: #6C7795;
+  font-size: 20px;
+}
+.login .playlist-types-container .playlist-types {
+  display: flex;
+  padding: 7px;
+  justify-content: space-around;
+  border-radius: 4px;
+  border: 2px solid var(--md-sys-color-on-surface-dark);
+  width: 300px;
+}
+.login .playlist-types-container .playlist-types label {
+  color: #6C7795;
+  font-size: 18px;
+}
+.login .playlist-types-container .playlist-types .radio-inputs {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.list-playlist-wrapper {
+  border: 1px solid var(--md-source);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  transition: 0.4s;
+  height: 60px;
+  cursor: pointer;
+  background-color: var(--md-source);
+  text-decoration: none !important;
+}
+.list-playlist-wrapper .icon {
+  color: white;
+}
+.list-playlist-wrapper:hover {
+  opacity: 0.7;
+}
+.list-playlist-wrapper p {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .login .playlist-types-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}/*# sourceMappingURL=styles.css.map */

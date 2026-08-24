@@ -1,0 +1,494 @@
+@import "../../../app/css/tokens.css";
+.profile-drop-and-header-container .invalid-user-popup-container {
+  background-color: white;
+  z-index: 99999;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  padding: 40px;
+  padding-bottom: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(90, 90, 90);
+}
+.profile-drop-and-header-container .invalid-user-popup-container .cross-icon {
+  border: 2px solid var(--md-ref-palette-primary50);
+  border-radius: 50%;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  background: var(--md-ref-palette-primary50);
+}
+.profile-drop-and-header-container .invalid-user-popup-container .invalid-title {
+  color: #595959;
+  font-size: 25px;
+  font-weight: 500;
+}
+.profile-drop-and-header-container .invalid-user-popup-container .ok-btn {
+  color: white;
+  background: var(--md-ref-palette-primary50);
+  border: none;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 5px;
+}
+.profile-drop-and-header-container .invalid-user-popup-container .ok-btn:hover {
+  cursor: pointer;
+}
+.profile-drop-and-header-container .invalid-user-popup-container .ok-btn:nth-child(1) {
+  background-color: gray;
+}
+.profile-drop-and-header-container .mainHeader {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  height: 84px !important;
+  padding: 0 45px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+  z-index: 1000 !important;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.profile-drop-and-header-container .mainHeader.scrolled {
+  background: rgba(8, 12, 24, 0.82) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75) !important;
+}
+
+.brandName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.ottHeaderNav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ottNavTab {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 10px 20px !important;
+  border-radius: 14px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #cbd5e1 !important;
+  text-decoration: none !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+.ottNavTab .ottNavIcon {
+  font-size: 24px !important;
+  color: #cbd5e1 !important;
+  transition: color 0.25s ease !important;
+}
+
+.ottNavTab:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.ottNavTab:hover .ottNavIcon {
+  color: #818cf8 !important;
+}
+
+.ottNavTab.active {
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%) !important;
+  border-color: #a855f7 !important;
+  box-shadow: 0 4px 18px rgba(99, 102, 241, 0.45) !important;
+}
+
+.ottNavTab.active .ottNavIcon {
+  color: #ffffff !important;
+}
+
+.ottHeaderUserContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ottUserProfileBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.ottUserProfileBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.ottUserAvatarBadge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ottUserAvatarBadge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ottUserName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.ottChevron {
+  color: #94a3b8;
+  font-size: 20px !important;
+  transition: transform 0.25s ease;
+}
+
+.ottChevron.open {
+  transform: rotate(180deg);
+}
+
+.ottProfileDropdownCard {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  width: 220px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeInDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 120;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ottProfileCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px;
+}
+
+.ottCardAvatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ottCardAvatar svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ottCardMeta {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ottCardName {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ottCardStatus {
+  font-size: 12px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.ottCardDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 0;
+}
+
+.ottCardMenuItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+}
+
+.ottCardMenuItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.ottCardMenuItem.danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.ottCardMenuItem .menuItemIcon {
+  font-size: 18px !important;
+}
+.profile-drop-and-header-container .search-input-container {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: 0.4s;
+  display: none;
+}
+.profile-drop-and-header-container .search-input-container .search-input {
+  padding: 10px;
+  border: 2px solid #615DFC;
+  background-color: transparent;
+  border-radius: 5px;
+  color: black;
+  width: 100%;
+  transition: 0.4s;
+  letter-spacing: 1px;
+}
+.profile-drop-and-header-container .search-input-container ::-moz-placeholder {
+  color: black;
+  opacity: 0.7;
+}
+.profile-drop-and-header-container .search-input-container ::placeholder {
+  color: black;
+  opacity: 0.7;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .change-theme {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding-bottom: 20px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options {
+  transition: 0.4s;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .options-head {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .options-head svg {
+  transition: 0.4s;
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .options-head svg:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .options-head path {
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .options-head h3 {
+  color: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .parent-option-title {
+  font-size: 18px !important;
+  font-weight: 500;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .left {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .left p {
+  color: black;
+  font-size: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .left svg path {
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .right {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .right .content {
+  font-size: 14px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option img {
+  width: 15px;
+  height: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .right-arrow {
+  width: 15px;
+  height: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option .right-arrow path {
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option {
+  transition: 0.4s;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .option:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .parent-option-title {
+  font-size: 18px !important;
+  font-weight: 500;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .left {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .left p {
+  color: black;
+  font-size: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .left svg path {
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .right {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .right .content {
+  font-size: 14px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option img {
+  width: 15px;
+  height: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .right-arrow {
+  width: 15px;
+  height: 15px;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option .right-arrow path {
+  stroke: black;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option {
+  transition: 0.4s;
+}
+.profile-drop-and-header-container .profileDrop .profileOption .setting-options .parent-option .option:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.profile-drop-and-header-container .closeProfile {
+  z-index: 99999;
+}
+
+.color-options {
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  transition: 0.4s;
+}
+.color-options div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: 0.4s;
+  border: 1px solid lightgray;
+}
+.color-options div:hover {
+  cursor: pointer;
+  border-color: black;
+}
+.color-options div:nth-child(1) {
+  background: linear-gradient(to bottom, #B32100, rgb(180, 59, 32));
+}
+.color-options div:nth-child(2) {
+  background: linear-gradient(to bottom, #615DFC, #7773f5);
+}
+.color-options div:nth-child(3) {
+  background: linear-gradient(to bottom, #4fa162, #64c77b);
+}
+
+.cancel-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .profile-drop-and-header-container .search-input-container {
+    display: flex;
+  }
+  .profile-drop-and-header-container .mainHeader .mainMenu #search-input-container {
+    display: none;
+  }
+}/*# sourceMappingURL=styles.css.map */

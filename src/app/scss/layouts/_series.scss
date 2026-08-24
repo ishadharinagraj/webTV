@@ -1,0 +1,84 @@
+
+.seriesList{
+    padding:0 80px 100px;
+    .h3{
+        font-size: 30px;
+        font-weight: bold;
+        display: flex;
+        margin: 40px 0 20px 20px;
+        align-items: baseline;
+        b{
+            font-size: 25px;
+            font-weight: 500;
+            margin-left: 50px;
+        }
+    }
+    .list{
+        position: relative;
+        padding: 20px;
+        .listLink{
+            display: flex;
+            flex-wrap: wrap;
+            text-decoration: none !important;
+        }
+        .downloadBtn{
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include borderRadius(2px);
+            right: 20px;
+            top: 20px;
+            position: absolute;
+            &:hover{
+                opacity: 0.6;
+            }
+        }
+        .thumb{
+            width: 300px;
+            height: 150px;
+            @include borderRadius(15px);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                position: absolute;
+                width: 80px;
+                z-index: 1;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .info{
+            display: flex;
+            flex-direction: column;
+            margin-left: 20px;
+            .h4{
+                font-size: 28px;
+            }
+            .rate{
+                margin-top: 6px;
+                svg{
+                    width: 20px;
+                    margin-right: 8px;
+                }
+            }
+            .dur{
+                margin-top: 6px;
+                font-size: 20px;
+                font-weight: 400;
+            }
+        }
+        .text{
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+            margin: 15px 0 0;
+        }
+    }
+}

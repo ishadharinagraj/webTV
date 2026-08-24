@@ -1,0 +1,52 @@
+.profileSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    flex-direction: column;
+    >img, >svg{
+        max-height: 150px;
+        margin-top: -150px;
+        margin-bottom: 40px;
+        max-width: 425px;
+        max-height: 150px;
+    }
+    .profileList{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 1400px;
+        justify-content: center;
+        a{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            .thumb{
+                width: 180px;
+                height: 180px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 20px;
+                @include borderRadius(4px);
+            }
+            .text{
+                font-size: 20px;
+                font-weight: 500;
+            }
+            &:not(.add){
+                svg{
+                    width: 100px;
+                }
+            }
+            &.add{
+                svg{
+                    width: 70px;
+                }
+            }
+        }
+    }
+}

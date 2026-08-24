@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(../fonts/regular.woff) format('woff2');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 500;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(../fonts/medium.woff) format('woff2');
+}
+@font-face {
+    font-family: 'SF Pro Display';
+    font-style: normal;
+    font-weight: 700;
+    font-stretch: 100%;
+    font-display: swap;
+    src: url(../fonts/bold.woff) format('woff2');
+}
+*{
+    font-family: 'SF Pro Display';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+}

@@ -1,0 +1,94 @@
+@import "../../../app/css/tokens.css";
+
+.delete-modal-paper {
+  background: #0f172a !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+  width: 440px !important;
+  max-width: 92vw !important;
+  overflow: hidden !important;
+  color: #ffffff !important;
+}
+
+.deleteModalContainer {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.deleteIconBadge {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+}
+
+.deleteWarningIcon {
+  font-size: 38px !important;
+  color: #ef4444 !important;
+}
+
+.deleteModalTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+.deleteModalSubtitle {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin: 0 0 28px 0;
+}
+
+.deleteModalActions {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+}
+
+.confirmDeleteBtn,
+.cancelDeleteBtn {
+  flex: 1;
+  height: 48px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.confirmDeleteBtn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.confirmDeleteBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(239, 68, 68, 0.6);
+}
+
+.cancelDeleteBtn {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.cancelDeleteBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
