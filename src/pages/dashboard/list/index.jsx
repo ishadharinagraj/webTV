@@ -25,7 +25,6 @@ import noContentFound from "@/assets/noContentFound.svg";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Cancel, Info } from "@mui/icons-material";
 import M3uList from "./m3u";
-import AdSense from "@/utils/Adsense";
 import { Skeleton } from "@mui/material";
 
 const options = {

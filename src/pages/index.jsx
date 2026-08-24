@@ -8,7 +8,6 @@ import "./styles.css";
 import { AppContext } from "@/contexts/app";
 import { getUser } from "@/utils/local";
 import { m3utojson } from "./render";
-import AdSense from "@/utils/Adsense";
 import ViewListIcon from "@mui/icons-material/ViewList";
 import StorageIcon from "@mui/icons-material/Storage";
 import MediaPlayer from "@/utils/player/mediaPlayer";

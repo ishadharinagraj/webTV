@@ -14,7 +14,6 @@ import { parse } from "iptv-playlist-parser";
 import Loading from "@/utils/loading";
 import { useRouter } from "next/router";
 import { migrateData } from "@/firebase/functions";
-import AdSense from "@/utils/Adsense";
 import Disclaimer from "@/utils/disclaimer";
 import NetworkAlert from "@/utils/networkAlert";
 
@@ -363,7 +362,6 @@ const MyApp = ({ Component, pageProps }) => {
         <Disclaimer />
         <NetworkAlert />
         <GoogleAnalytics />
-        {/* <AdSense/> */}
     </AppContext.Provider>
     </ErrorBoundary>
 }
