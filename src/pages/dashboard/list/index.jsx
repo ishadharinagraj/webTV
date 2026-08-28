@@ -605,367 +605,365 @@ const AllList = ({ currentUser, currentAction }) => {
 
   const Category = React.useCallback(
     ({ index }) => {
-    const filtered = currentSelected?.streams.filter(
-      (movie) =>
-        movie?.category_id ===
+      const filtered = currentSelected?.streams.filter(
+        (movie) =>
+          movie?.category_id ===
           currentSelected.streamCategories[index].category_id ||
-        movie?.categories?.filter(
-          (id) =>
-            String(id) ===
-            String(currentSelected.streamCategories[index].category_id)
-        ).length > 0
-    );
-    const [errorIndex, setErrorIndex] = useState(null);
+          movie?.categories?.filter(
+            (id) =>
+              String(id) ===
+              String(currentSelected.streamCategories[index].category_id)
+          ).length > 0
+      );
+      const [errorIndex, setErrorIndex] = useState(null);
 
-    const innerElement = (args) => {
-      const filteredComp = filtered[args.columnIndex];
-      const { category_name, added, name } = filteredComp;
-      const isFavourite =
-        FavouriteMovies &&
-        FavouriteMovies.filter(
-          (movie) => movie[currentKeys.id] === filteredComp[currentKeys.id]
-        ).length > 0;
-      const category = currentSelected.streamCategories[index].category_name;
-      const isAdult =
-        adultArray.filter((item) =>
-          category.toLowerCase().includes(item.toLowerCase())
-        ).length > 0;
-      const handleItem = () => {
-        if (parentalPin) {
-          if (isAdult) {
-            setClickedAdultItem(
-              filteredComp[
-                currentAction === "movies" ? "stream_id" : "series_id"
-              ]
-            );
-            setShowParentalLock(true);
-          } else {
-            setShowParentalLock(false);
-            router.push(
-              `/dashboard/preview/${currentAction}/${
+      const innerElement = (args) => {
+        const filteredComp = filtered[args.columnIndex];
+        const { category_name, added, name } = filteredComp;
+        const isFavourite =
+          FavouriteMovies &&
+          FavouriteMovies.filter(
+            (movie) => movie[currentKeys.id] === filteredComp[currentKeys.id]
+          ).length > 0;
+        const category = currentSelected.streamCategories[index].category_name;
+        const isAdult =
+          adultArray.filter((item) =>
+            category.toLowerCase().includes(item.toLowerCase())
+          ).length > 0;
+        const handleItem = () => {
+          if (parentalPin) {
+            if (isAdult) {
+              setClickedAdultItem(
                 filteredComp[
-                  currentAction === "movies" ? "stream_id" : "series_id"
+                currentAction === "movies" ? "stream_id" : "series_id"
                 ]
+              );
+              setShowParentalLock(true);
+            } else {
+              setShowParentalLock(false);
+              router.push(
+                `/dashboard/preview/${currentAction}/${filteredComp[
+                currentAction === "movies" ? "stream_id" : "series_id"
+                ]
+                }`
+              );
+            }
+          } else {
+            router.push(
+              `/dashboard/preview/${currentAction}/${filteredComp[
+              currentAction === "movies" ? "stream_id" : "series_id"
+              ]
               }`
             );
           }
-        } else {
-          router.push(
-            `/dashboard/preview/${currentAction}/${
-              filteredComp[
-                currentAction === "movies" ? "stream_id" : "series_id"
-              ]
-            }`
-          );
-        }
-      };
-      return (
-        <div style={{ ...args.style, padding: 5, paddingTop: 6 }}>
-          <div
-            onClick={handleItem}
-            onMouseEnter={(e) => handleCardMouseEnter(e, filteredComp)}
-            onMouseLeave={handleCardMouseLeave}
-            key={args.key}
-            className="item"
-          >
-            <div className="caption">
-              <span className="control">
-                {Number(filteredComp.rating).toFixed(1) !== "NaN" &&
-                Number(filteredComp.rating) !== 0 ? (
-                  <span className="count">
-                    {Number(filteredComp.rating).toFixed(1)}
-                  </span>
-                ) : (
-                  <span></span>
-                )}
-                {isFavourite && (
-                  <Link href="javascript:void(0)">
-                    <svg
-                      width="30"
-                      height="26"
-                      viewBox="0 0 30 26"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      {" "}
-                      <path
-                        d="M29.2239 7.73189C29.2239 8.12625 29.2239 8.52061 29.2239 8.91467C29.2091 8.99632 29.1875 9.07738 29.181 9.15933C29.0718 10.5385 28.6337 11.8136 27.9606 13.0141C27.113 14.5265 25.9933 15.827 24.7685 17.0364C21.7994 19.9679 18.5333 22.5639 15.3951 25.3043C15.0229 25.6294 14.5771 25.6093 14.1904 25.2874C13.8659 25.0173 13.5469 24.7404 13.2289 24.4623C10.706 22.2574 8.16057 20.0782 5.67077 17.8369C4.12678 16.4471 2.71503 14.9182 1.69378 13.0851C-0.0217981 10.006 -0.113805 6.88017 1.61036 3.78242C2.56563 2.06565 4.04069 0.913648 5.94354 0.375217C7.9733 -0.19901 9.91905 0.00807828 11.7287 1.14352C12.8804 1.86626 13.7579 2.85732 14.4765 3.99927C14.5827 4.1679 14.6862 4.33801 14.7629 4.46167C15.3081 3.75845 15.7856 3.01796 16.3841 2.39344C18.4931 0.19357 21.056 -0.47858 23.9434 0.472844C26.661 1.36835 28.2366 3.37771 28.9393 6.10329C29.0762 6.63521 29.131 7.18843 29.2239 7.73189Z"
-                        fill="#FF0000"
-                      />{" "}
-                    </svg>
-                  </Link>
-                )}
-              </span>
-              <span className="info">
-                <text>{category_name}</text>
-                {/* <text>{added && formattedDate(added)}</text> */}
-              </span>
-              <span className="h2">{name}</span>
-            </div>
-            <div className="thumb">
-              {errorIndex === args.columnIndex ? (
-                <Image alt="placeholder" src={placeholderImage} />
-              ) : filteredComp[currentKeys.image] ? (
-                <img
-                  style={{
-                    filter: isAdult && parentalPin && "blur(20px)",
-                  }}
-                  onError={() => setErrorIndex(args.columnIndex)}
-                  src={filteredComp[currentKeys.image]}
-                  ref={(element) => (listImagesRef.current[index] = element)}
-                />
-              ) : (
-                <Image
-                  alt="placeholder"
-                  src={placeholderImage}
-                  ref={(element) => (listImagesRef.current[index] = element)}
-                />
-              )}
-              {isAdult && parentalPin && (
-                <svg
-                  style={{
-                    zIndex: 99,
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%,-50%)",
-                  }}
-                  width="32"
-                  height="38"
-                  viewBox="0 0 20 26"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M9.35342 0.978516C9.71046 0.978516 10.0675 0.978516 10.4246 0.978516C10.6069 1.0108 10.7891 1.04529 10.972 1.07454C13.6371 1.50415 15.8459 3.8255 16.0656 6.51604C16.1583 7.65313 16.1075 8.80208 16.1216 9.94578C16.1229 10.0653 16.1218 10.1847 16.1218 10.3277C16.3536 10.3277 16.5625 10.3274 16.7714 10.3277C18.2385 10.3296 19.2373 11.3213 19.2379 12.7826C19.2392 16.337 19.239 19.8918 19.2379 23.4462C19.2373 24.9108 18.2409 25.908 16.7791 25.9094C15.3184 25.9108 13.8576 25.9097 12.3969 25.9097C9.24001 25.9097 6.08316 25.9124 2.92631 25.9083C1.60326 25.9066 0.549224 24.9067 0.545085 23.6167C0.533772 19.9486 0.535152 16.2805 0.545085 12.6123C0.54812 11.4981 1.37617 10.547 2.47545 10.3743C2.8554 10.3147 3.24694 10.3277 3.65641 10.3061C3.65641 10.2176 3.65641 10.1301 3.65641 10.0429C3.65696 9.06089 3.64813 8.07888 3.65972 7.09714C3.69007 4.49186 5.41763 2.12443 7.89129 1.3179C8.36506 1.16338 8.86531 1.08944 9.35342 0.978516ZM14.04 10.321C14.04 9.49768 14.0469 8.69612 14.0372 7.89484C14.0314 7.42549 14.0414 6.95007 13.9718 6.48817C13.6457 4.31968 11.4524 2.74195 9.29354 3.10037C7.17969 3.45107 5.74929 5.12373 5.73853 7.26407C5.73384 8.20498 5.73743 9.14615 5.73798 10.0871C5.73798 10.1638 5.7446 10.2405 5.74819 10.321C8.51957 10.321 11.2598 10.321 14.04 10.321ZM9.88457 14.4809C8.99416 14.4842 8.19481 15.0664 7.91475 15.9154C7.63634 16.7589 7.92192 17.6764 8.65147 18.2081C8.81095 18.3242 8.86062 18.4412 8.85786 18.628C8.8482 19.293 8.85206 19.958 8.85593 20.623C8.85675 20.7515 8.86282 20.8848 8.89732 21.0073C9.03279 21.4883 9.51318 21.8086 9.9897 21.749C10.5222 21.6822 10.9071 21.2879 10.9174 20.7609C10.9312 20.0557 10.9295 19.3498 10.9187 18.6443C10.9157 18.4478 10.967 18.3253 11.1326 18.2036C11.8607 17.6681 12.1408 16.7523 11.8583 15.908C11.5735 15.0553 10.7742 14.4776 9.88457 14.4809Z"
-                    fill="black"
+        };
+        return (
+          <div style={{ ...args.style, padding: 5, paddingTop: 6 }}>
+            <div
+              onClick={handleItem}
+              onMouseEnter={(e) => handleCardMouseEnter(e, filteredComp)}
+              onMouseLeave={handleCardMouseLeave}
+              key={args.key}
+              className="item"
+            >
+              <div className="caption">
+                <span className="control">
+                  {Number(filteredComp.rating).toFixed(1) !== "NaN" &&
+                    Number(filteredComp.rating) !== 0 ? (
+                    <span className="count">
+                      {Number(filteredComp.rating).toFixed(1)}
+                    </span>
+                  ) : (
+                    <span></span>
+                  )}
+                  {isFavourite && (
+                    <Link href="javascript:void(0)">
+                      <svg
+                        width="30"
+                        height="26"
+                        viewBox="0 0 30 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        {" "}
+                        <path
+                          d="M29.2239 7.73189C29.2239 8.12625 29.2239 8.52061 29.2239 8.91467C29.2091 8.99632 29.1875 9.07738 29.181 9.15933C29.0718 10.5385 28.6337 11.8136 27.9606 13.0141C27.113 14.5265 25.9933 15.827 24.7685 17.0364C21.7994 19.9679 18.5333 22.5639 15.3951 25.3043C15.0229 25.6294 14.5771 25.6093 14.1904 25.2874C13.8659 25.0173 13.5469 24.7404 13.2289 24.4623C10.706 22.2574 8.16057 20.0782 5.67077 17.8369C4.12678 16.4471 2.71503 14.9182 1.69378 13.0851C-0.0217981 10.006 -0.113805 6.88017 1.61036 3.78242C2.56563 2.06565 4.04069 0.913648 5.94354 0.375217C7.9733 -0.19901 9.91905 0.00807828 11.7287 1.14352C12.8804 1.86626 13.7579 2.85732 14.4765 3.99927C14.5827 4.1679 14.6862 4.33801 14.7629 4.46167C15.3081 3.75845 15.7856 3.01796 16.3841 2.39344C18.4931 0.19357 21.056 -0.47858 23.9434 0.472844C26.661 1.36835 28.2366 3.37771 28.9393 6.10329C29.0762 6.63521 29.131 7.18843 29.2239 7.73189Z"
+                          fill="#FF0000"
+                        />{" "}
+                      </svg>
+                    </Link>
+                  )}
+                </span>
+                <span className="info">
+                  <text>{category_name}</text>
+                  {/* <text>{added && formattedDate(added)}</text> */}
+                </span>
+                <span className="h2">{name}</span>
+              </div>
+              <div className="thumb">
+                {errorIndex === args.columnIndex ? (
+                  <Image alt="placeholder" src={placeholderImage} />
+                ) : filteredComp[currentKeys.image] ? (
+                  <img
+                    style={{
+                      filter: isAdult && parentalPin && "blur(20px)",
+                    }}
+                    onError={() => setErrorIndex(args.columnIndex)}
+                    src={filteredComp[currentKeys.image]}
+                    ref={(element) => (listImagesRef.current[index] = element)}
                   />
-                </svg>
-              )}
+                ) : (
+                  <Image
+                    alt="placeholder"
+                    src={placeholderImage}
+                    ref={(element) => (listImagesRef.current[index] = element)}
+                  />
+                )}
+                {isAdult && parentalPin && (
+                  <svg
+                    style={{
+                      zIndex: 99,
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%,-50%)",
+                    }}
+                    width="32"
+                    height="38"
+                    viewBox="0 0 20 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M9.35342 0.978516C9.71046 0.978516 10.0675 0.978516 10.4246 0.978516C10.6069 1.0108 10.7891 1.04529 10.972 1.07454C13.6371 1.50415 15.8459 3.8255 16.0656 6.51604C16.1583 7.65313 16.1075 8.80208 16.1216 9.94578C16.1229 10.0653 16.1218 10.1847 16.1218 10.3277C16.3536 10.3277 16.5625 10.3274 16.7714 10.3277C18.2385 10.3296 19.2373 11.3213 19.2379 12.7826C19.2392 16.337 19.239 19.8918 19.2379 23.4462C19.2373 24.9108 18.2409 25.908 16.7791 25.9094C15.3184 25.9108 13.8576 25.9097 12.3969 25.9097C9.24001 25.9097 6.08316 25.9124 2.92631 25.9083C1.60326 25.9066 0.549224 24.9067 0.545085 23.6167C0.533772 19.9486 0.535152 16.2805 0.545085 12.6123C0.54812 11.4981 1.37617 10.547 2.47545 10.3743C2.8554 10.3147 3.24694 10.3277 3.65641 10.3061C3.65641 10.2176 3.65641 10.1301 3.65641 10.0429C3.65696 9.06089 3.64813 8.07888 3.65972 7.09714C3.69007 4.49186 5.41763 2.12443 7.89129 1.3179C8.36506 1.16338 8.86531 1.08944 9.35342 0.978516ZM14.04 10.321C14.04 9.49768 14.0469 8.69612 14.0372 7.89484C14.0314 7.42549 14.0414 6.95007 13.9718 6.48817C13.6457 4.31968 11.4524 2.74195 9.29354 3.10037C7.17969 3.45107 5.74929 5.12373 5.73853 7.26407C5.73384 8.20498 5.73743 9.14615 5.73798 10.0871C5.73798 10.1638 5.7446 10.2405 5.74819 10.321C8.51957 10.321 11.2598 10.321 14.04 10.321ZM9.88457 14.4809C8.99416 14.4842 8.19481 15.0664 7.91475 15.9154C7.63634 16.7589 7.92192 17.6764 8.65147 18.2081C8.81095 18.3242 8.86062 18.4412 8.85786 18.628C8.8482 19.293 8.85206 19.958 8.85593 20.623C8.85675 20.7515 8.86282 20.8848 8.89732 21.0073C9.03279 21.4883 9.51318 21.8086 9.9897 21.749C10.5222 21.6822 10.9071 21.2879 10.9174 20.7609C10.9312 20.0557 10.9295 19.3498 10.9187 18.6443C10.9157 18.4478 10.967 18.3253 11.1326 18.2036C11.8607 17.6681 12.1408 16.7523 11.8583 15.908C11.5735 15.0553 10.7742 14.4776 9.88457 14.4809Z"
+                      fill="black"
+                    />
+                  </svg>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      );
-    };
+        );
+      };
 
-    const handleTouchMove = (e, ref) => {
-      e.preventDefault();
+      const handleTouchMove = (e, ref) => {
+        e.preventDefault();
 
-      const x = e.touches[0].clientX - ref.childNodes[0].offsetLeft;
-      const scroll = x - startX;
-      ref.childNodes[0].scrollLeft = scrollLeft - scroll;
-      if (mouseDown) {
-        const nodes = ref.childNodes[0].childNodes[0].childNodes;
-        nodes.forEach((el) => {
-          el.style.pointerEvents = "none";
-        });
         const x = e.touches[0].clientX - ref.childNodes[0].offsetLeft;
         const scroll = x - startX;
         ref.childNodes[0].scrollLeft = scrollLeft - scroll;
-      }
-    };
-
-    const handleTouchStart = (e, ref) => {
-      mouseDown = true;
-      startX = e.touches[0].clientX - ref.childNodes[0].offsetLeft;
-      scrollLeft = ref.childNodes[0].scrollLeft;
-    };
-
-    const [canScrollLeft, setCanScrollLeft] = useState(false);
-    const [canScrollRight, setCanScrollRight] = useState(false);
-
-    useEffect(() => {
-      const container = refs.current[index];
-      if (!container) return;
-      const gridEl = container.querySelector(".ReactVirtualized__Grid") || container.childNodes[0];
-      if (!gridEl) return;
-
-      const updateScroll = () => {
-        const { scrollLeft, scrollWidth, clientWidth } = gridEl;
-        const totalContentWidth = filtered ? filtered.length * 173 : scrollWidth;
-        const maxContainerWidth = clientWidth || (window.innerWidth - 60);
-        const isOverflowing = totalContentWidth > maxContainerWidth + 10;
-
-        setCanScrollLeft(isOverflowing && scrollLeft > 5);
-        setCanScrollRight(isOverflowing && scrollLeft + maxContainerWidth < totalContentWidth - 10);
+        if (mouseDown) {
+          const nodes = ref.childNodes[0].childNodes[0].childNodes;
+          nodes.forEach((el) => {
+            el.style.pointerEvents = "none";
+          });
+          const x = e.touches[0].clientX - ref.childNodes[0].offsetLeft;
+          const scroll = x - startX;
+          ref.childNodes[0].scrollLeft = scrollLeft - scroll;
+        }
       };
 
-      updateScroll();
-      gridEl.addEventListener("scroll", updateScroll, { passive: true });
-      window.addEventListener("resize", updateScroll, { passive: true });
-
-      return () => {
-        gridEl.removeEventListener("scroll", updateScroll);
-        window.removeEventListener("resize", updateScroll);
+      const handleTouchStart = (e, ref) => {
+        mouseDown = true;
+        startX = e.touches[0].clientX - ref.childNodes[0].offsetLeft;
+        scrollLeft = ref.childNodes[0].scrollLeft;
       };
-    }, [index, filtered, windowSize]);
 
-    const handleScrollRow = (direction) => {
-      const container = refs.current[index];
-      if (!container) return;
-      const gridEl = container.querySelector(".ReactVirtualized__Grid") || container.childNodes[0] || container;
-      if (gridEl) {
-        const scrollAmount = 600;
-        gridEl.scrollBy({
-          left: direction === "left" ? -scrollAmount : scrollAmount,
-          behavior: "smooth",
-        });
-        setTimeout(() => {
+      const [canScrollLeft, setCanScrollLeft] = useState(false);
+      const [canScrollRight, setCanScrollRight] = useState(false);
+
+      useEffect(() => {
+        const container = refs.current[index];
+        if (!container) return;
+        const gridEl = container.querySelector(".ReactVirtualized__Grid") || container.childNodes[0];
+        if (!gridEl) return;
+
+        const updateScroll = () => {
           const { scrollLeft, scrollWidth, clientWidth } = gridEl;
           const totalContentWidth = filtered ? filtered.length * 173 : scrollWidth;
           const maxContainerWidth = clientWidth || (window.innerWidth - 60);
           const isOverflowing = totalContentWidth > maxContainerWidth + 10;
+
           setCanScrollLeft(isOverflowing && scrollLeft > 5);
           setCanScrollRight(isOverflowing && scrollLeft + maxContainerWidth < totalContentWidth - 10);
-        }, 350);
-      }
-    };
+        };
 
-    return (
-      filtered.length > 0 && (
-        <section key={index} className="category listSlider">
-          <div className="category-header-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: 20 }}>
-            <span className="h3">
-              {currentSelected.streamCategories[index].category_name}
-            </span>
-            <span
-              className="see-all-text"
-              onClick={() =>
-                router.push(
-                  `/dashboard/preview/movies/more?cat_id=${currentSelected.streamCategories[index].category_id}&cat_name=${encodeURIComponent(
-                    currentSelected.streamCategories[index].category_name
-                  )}`
-                )
-              }
-              style={{
-                color: "rgba(255, 255, 255, 0.7)",
-                fontSize: "14px",
-                fontWeight: "500",
-                cursor: "pointer",
-                transition: "color 0.2s ease"
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255, 255, 255, 0.7)")}
-            >
-              See All ›
-            </span>
-          </div>
-          <div className="list">
-            {canScrollLeft && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleScrollRow("left");
+        updateScroll();
+        gridEl.addEventListener("scroll", updateScroll, { passive: true });
+        window.addEventListener("resize", updateScroll, { passive: true });
+
+        return () => {
+          gridEl.removeEventListener("scroll", updateScroll);
+          window.removeEventListener("resize", updateScroll);
+        };
+      }, [index, filtered, windowSize]);
+
+      const handleScrollRow = (direction) => {
+        const container = refs.current[index];
+        if (!container) return;
+        const gridEl = container.querySelector(".ReactVirtualized__Grid") || container.childNodes[0] || container;
+        if (gridEl) {
+          const scrollAmount = 600;
+          gridEl.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+          });
+          setTimeout(() => {
+            const { scrollLeft, scrollWidth, clientWidth } = gridEl;
+            const totalContentWidth = filtered ? filtered.length * 173 : scrollWidth;
+            const maxContainerWidth = clientWidth || (window.innerWidth - 60);
+            const isOverflowing = totalContentWidth > maxContainerWidth + 10;
+            setCanScrollLeft(isOverflowing && scrollLeft > 5);
+            setCanScrollRight(isOverflowing && scrollLeft + maxContainerWidth < totalContentWidth - 10);
+          }, 350);
+        }
+      };
+
+      return (
+        filtered.length > 0 && (
+          <section key={index} className="category listSlider">
+            <div className="category-header-row" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingRight: 20 }}>
+              <span className="h3">
+                {currentSelected.streamCategories[index].category_name}
+              </span>
+              <span
+                className="see-all-text"
+                onClick={() =>
+                  router.push(
+                    `/dashboard/preview/movies/more?cat_id=${currentSelected.streamCategories[index].category_id}&cat_name=${encodeURIComponent(
+                      currentSelected.streamCategories[index].category_name
+                    )}`
+                  )
+                }
+                style={{
+                  color: "rgba(255, 255, 255, 0.7)",
+                  fontSize: "14px",
+                  fontWeight: "500",
+                  cursor: "pointer",
+                  transition: "color 0.2s ease"
                 }}
-                className="row-scroll-arrow left"
-                title="Scroll Left"
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#ffffff")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255, 255, 255, 0.7)")}
               >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-            )}
-            {canScrollRight && (
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleScrollRow("right");
-                }}
-                className="row-scroll-arrow right"
-                title="Scroll Right"
-              >
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            )}
-            <div
-              style={{
-                paddingLeft: 10,
-              }}
-              className="owl-carousel owl-theme"
-              onMouseDown={(e) =>
-                handleListDown(e, refs.current[Number(index)])
-              }
-              onMouseUp={(e) => stopDragging(e, refs.current[Number(index)])}
-              onMouseLeave={(e) => stopDragging(e, refs.current[Number(index)])}
-              onTouchEnd={(e) => stopDragging(e, refs.current[Number(index)])}
-              onTouchStart={(e) =>
-                handleTouchStart(e, refs.current[Number(index)])
-              }
-              onTouchMove={(e) =>
-                handleTouchMove(e, refs.current[Number(index)])
-              }
-              onMouseMove={(e) =>
-                handlelistMove(e, refs.current[Number(index)])
-              }
-              ref={(element) => (refs.current[index] = element)}
-            >
-              {currentSelected.streams ? (
-                // <AutoSizer disableHeight>
-                //  {({ width }) => (
-                <Grid
-                  height={270}
-                  cellRenderer={innerElement}
-                  columnCount={filtered ? filtered.length : 0}
-                  rowHeight={250}
-                  style={{
-                    overflowY: "hidden",
-                    overflowX: "hidden",
-                    paddingTop: 15,
-                    paddingLeft: 5,
-                  }}
-                  rowCount={1}
-                  columnWidth={173}
-                  width={windowSize.width - window.innerWidth / 20}
-                  // width={width}
-                />
-              ) : (
-                // )}
-                //     </AutoSizer>
-                <>
-                  <Skeleton
-                    sx={{ borderRadius: 2 }}
-                    variant="rectangle"
-                    height={300}
-                    width={300}
-                  />
-                  <Skeleton
-                    sx={{ borderRadius: 2 }}
-                    variant="rectangle"
-                    height={300}
-                    width={300}
-                  />
-                  <Skeleton
-                    sx={{ borderRadius: 2 }}
-                    variant="rectangle"
-                    height={300}
-                    width={300}
-                  />
-                  <Skeleton
-                    sx={{ borderRadius: 2 }}
-                    variant="rectangle"
-                    height={300}
-                    width={300}
-                  />
-                  <Skeleton
-                    sx={{ borderRadius: 2 }}
-                    variant="rectangle"
-                    height={300}
-                    width={300}
-                  />
-                </>
-              )}
+                See All ›
+              </span>
             </div>
-          </div>
-        </section>
-      )
-    );
-  },
-  [currentSelected, FavouriteMovies, parentalPin, windowSize]
-);
+            <div className="list">
+              {canScrollLeft && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleScrollRow("left");
+                  }}
+                  className="row-scroll-arrow left"
+                  title="Scroll Left"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
+              )}
+              {canScrollRight && (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleScrollRow("right");
+                  }}
+                  className="row-scroll-arrow right"
+                  title="Scroll Right"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
+              )}
+              <div
+                style={{
+                  paddingLeft: 10,
+                }}
+                className="owl-carousel owl-theme"
+                onMouseDown={(e) =>
+                  handleListDown(e, refs.current[Number(index)])
+                }
+                onMouseUp={(e) => stopDragging(e, refs.current[Number(index)])}
+                onMouseLeave={(e) => stopDragging(e, refs.current[Number(index)])}
+                onTouchEnd={(e) => stopDragging(e, refs.current[Number(index)])}
+                onTouchStart={(e) =>
+                  handleTouchStart(e, refs.current[Number(index)])
+                }
+                onTouchMove={(e) =>
+                  handleTouchMove(e, refs.current[Number(index)])
+                }
+                onMouseMove={(e) =>
+                  handlelistMove(e, refs.current[Number(index)])
+                }
+                ref={(element) => (refs.current[index] = element)}
+              >
+                {currentSelected.streams ? (
+                  // <AutoSizer disableHeight>
+                  //  {({ width }) => (
+                  <Grid
+                    height={270}
+                    cellRenderer={innerElement}
+                    columnCount={filtered ? filtered.length : 0}
+                    rowHeight={250}
+                    style={{
+                      overflowY: "hidden",
+                      overflowX: "hidden",
+                      paddingTop: 15,
+                      paddingLeft: 5,
+                    }}
+                    rowCount={1}
+                    columnWidth={173}
+                    width={windowSize.width - window.innerWidth / 20}
+                  // width={width}
+                  />
+                ) : (
+                  // )}
+                  //     </AutoSizer>
+                  <>
+                    <Skeleton
+                      sx={{ borderRadius: 2 }}
+                      variant="rectangle"
+                      height={300}
+                      width={300}
+                    />
+                    <Skeleton
+                      sx={{ borderRadius: 2 }}
+                      variant="rectangle"
+                      height={300}
+                      width={300}
+                    />
+                    <Skeleton
+                      sx={{ borderRadius: 2 }}
+                      variant="rectangle"
+                      height={300}
+                      width={300}
+                    />
+                    <Skeleton
+                      sx={{ borderRadius: 2 }}
+                      variant="rectangle"
+                      height={300}
+                      width={300}
+                    />
+                    <Skeleton
+                      sx={{ borderRadius: 2 }}
+                      variant="rectangle"
+                      height={300}
+                      width={300}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </section>
+        )
+      );
+    },
+    [currentSelected, FavouriteMovies, parentalPin, windowSize]
+  );
   const FavsCategory = ({ favMovies }) => {
     return (
       favMovies.length > 0 && (
@@ -981,7 +979,7 @@ const AllList = ({ currentUser, currentAction }) => {
                 (ctg) =>
                   String(ctg.category_id) === String(movie?.category_id) ||
                   String(ctg.category_id) ===
-                    String(movie?.categories && movie?.categories[0])
+                  String(movie?.categories && movie?.categories[0])
               )[0];
               const category = isCategory && isCategory.category_name;
 
@@ -994,26 +992,24 @@ const AllList = ({ currentUser, currentAction }) => {
                   if (isAdult) {
                     setClickedAdultItem(
                       movie[
-                        currentAction === "movies" ? "stream_id" : "series_id"
+                      currentAction === "movies" ? "stream_id" : "series_id"
                       ]
                     );
                     setShowParentalLock(true);
                   } else {
                     setShowParentalLock(false);
                     router.push(
-                      `/dashboard/preview/${currentAction}/${
-                        movie[
-                          currentAction === "movies" ? "stream_id" : "series_id"
-                        ]
+                      `/dashboard/preview/${currentAction}/${movie[
+                      currentAction === "movies" ? "stream_id" : "series_id"
+                      ]
                       }`
                     );
                   }
                 } else {
                   router.push(
-                    `/dashboard/preview/${currentAction}/${
-                      movie[
-                        currentAction === "movies" ? "stream_id" : "series_id"
-                      ]
+                    `/dashboard/preview/${currentAction}/${movie[
+                    currentAction === "movies" ? "stream_id" : "series_id"
+                    ]
                     }`
                   );
                 }
@@ -1034,7 +1030,7 @@ const AllList = ({ currentUser, currentAction }) => {
                     <div className="caption">
                       <span className="control">
                         {Number(movie.rating).toFixed(1) !== "NaN" &&
-                        Number(movie.rating) !== 0 ? (
+                          Number(movie.rating) !== 0 ? (
                           <span className="count">
                             {Number(movie.rating).toFixed(1)}
                           </span>
@@ -1122,7 +1118,7 @@ const AllList = ({ currentUser, currentAction }) => {
     }
     setCurrentRecentItem(null);
   };
-  
+
 
   const Recents = React.useCallback(() => {
     return (
@@ -1137,7 +1133,7 @@ const AllList = ({ currentUser, currentAction }) => {
               const watched =
                 currentAction === "series"
                   ? lastWatched.length > 0 &&
-                    (lastWatched[0].timeline / lastWatched[0].duration) * 100
+                  (lastWatched[0].timeline / lastWatched[0].duration) * 100
                   : (movie.timeline / movie.duration) * 100;
               const added =
                 currentAction === "movies"
@@ -1145,15 +1141,15 @@ const AllList = ({ currentUser, currentAction }) => {
                   : movie.info?.last_modified;
               const isFavourite = FavouriteMovies
                 ? FavouriteMovies.filter(
-                    (item) => String(item[currentKeys.id]) === String(movie.id)
-                  ).length > 0
+                  (item) => String(item[currentKeys.id]) === String(movie.id)
+                ).length > 0
                 : null;
               const isCategory = currentSelected.streamCategories?.filter(
                 (ctg) =>
                   String(ctg.category_id) ===
-                    String(movie?.info?.category_id) ||
+                  String(movie?.info?.category_id) ||
                   String(ctg.category_id) ===
-                    String(movie?.info?.categories && movie.info?.categories[0])
+                  String(movie?.info?.categories && movie.info?.categories[0])
               )[0];
               const category = isCategory && isCategory.category_name;
               const isAdult =
@@ -1167,7 +1163,7 @@ const AllList = ({ currentUser, currentAction }) => {
                   if (isAdult) {
                     setClickedAdultItem(
                       movie.info[
-                        currentAction === "movies" ? "stream_id" : "series_id"
+                      currentAction === "movies" ? "stream_id" : "series_id"
                       ]
                     );
                     setShowParentalLock(true);
@@ -1175,22 +1171,20 @@ const AllList = ({ currentUser, currentAction }) => {
                     setShowParentalLock(false);
                     if (action === "info") {
                       router.push(
-                        `/dashboard/preview/${currentAction}/${
-                          movie.info[
-                            currentAction === "movies"
-                              ? "stream_id"
-                              : "series_id"
-                          ]
+                        `/dashboard/preview/${currentAction}/${movie.info[
+                        currentAction === "movies"
+                          ? "stream_id"
+                          : "series_id"
+                        ]
                         }`
                       );
                     } else {
                       router.push(
-                        `/dashboard/preview/${currentAction}/${
-                          movie.info[
-                            currentAction === "movies"
-                              ? "stream_id"
-                              : "series_id"
-                          ]
+                        `/dashboard/preview/${currentAction}/${movie.info[
+                        currentAction === "movies"
+                          ? "stream_id"
+                          : "series_id"
+                        ]
                         }?state=play`
                       );
                     }
@@ -1198,18 +1192,16 @@ const AllList = ({ currentUser, currentAction }) => {
                 } else {
                   if (action === "info") {
                     router.push(
-                      `/dashboard/preview/${currentAction}/${
-                        movie.info[
-                          currentAction === "movies" ? "stream_id" : "series_id"
-                        ]
+                      `/dashboard/preview/${currentAction}/${movie.info[
+                      currentAction === "movies" ? "stream_id" : "series_id"
+                      ]
                       }`
                     );
                   } else {
                     router.push(
-                      `/dashboard/preview/${currentAction}/${
-                        movie.info[
-                          currentAction === "movies" ? "stream_id" : "series_id"
-                        ]
+                      `/dashboard/preview/${currentAction}/${movie.info[
+                      currentAction === "movies" ? "stream_id" : "series_id"
+                      ]
                       }?state=play`
                     );
                   }
@@ -1234,7 +1226,7 @@ const AllList = ({ currentUser, currentAction }) => {
                     <div className="caption">
                       <span className="control">
                         {Number(movie.info?.rating).toFixed(1) !== "NaN" &&
-                        Number(movie.info?.rating) !== 0 ? (
+                          Number(movie.info?.rating) !== 0 ? (
                           <span className="count">
                             {Number(movie.info?.rating).toFixed(1)}
                           </span>
@@ -1313,7 +1305,7 @@ const AllList = ({ currentUser, currentAction }) => {
     );
   }, [recents, currentKeys, currentAction, FavouriteMovies, adultArray, parentalPin, handleCardMouseEnter, handleCardMouseLeave]);
 
-    useEffect(() => {
+  useEffect(() => {
     setBannerMovies([]);
     if (currentSelected.banner.streams) {
       setBannerMovies(currentSelected.banner.streams);
@@ -1593,7 +1585,7 @@ const AllList = ({ currentUser, currentAction }) => {
               <HoverCard />
             </div>
           ) : (currentSelected.streams && currentSelected.streams.length === 0) ||
-          !currentSelected.streams ? (
+            !currentSelected.streams ? (
             <div className="no-data-found-container">
               <Image src={noContentFound} alt="No content found" width={150} height={150} />
               <h2 className="no-data-found">No {currentAction} found</h2>
@@ -1621,16 +1613,16 @@ const AllList = ({ currentUser, currentAction }) => {
                               movie.info?.backdrop_path.length > 0
                               ? movie.info?.backdrop_path[0]
                               : movie.info?.cover
-                              ? movie.info?.cover
-                              : null;
+                                ? movie.info?.cover
+                                : null;
                           }
                           if (currentAction === "series") {
                             return movie.backdrop_path &&
                               movie.backdrop_path.length > 0
                               ? movie.backdrop_path[0]
                               : movie.cover
-                              ? movie.cover
-                              : null;
+                                ? movie.cover
+                                : null;
                           }
                         };
                         const id =
@@ -1673,12 +1665,11 @@ const AllList = ({ currentUser, currentAction }) => {
                                 </p>
                                 <div className="btnGroup">
                                   <Link
-                                    href={`/dashboard/preview/${currentAction}/${
-                                      currentAction === "movies"
-                                        ? movie?.movie_data?.stream_id
-                                        : currentSelected.streams[index]
-                                            .series_id
-                                    }`}
+                                    href={`/dashboard/preview/${currentAction}/${currentAction === "movies"
+                                      ? movie?.movie_data?.stream_id
+                                      : currentSelected.streams[index]
+                                        .series_id
+                                      }`}
                                     className="btn btn-primary playBtn"
                                   >
                                     <svg
@@ -1723,7 +1714,7 @@ const AllList = ({ currentUser, currentAction }) => {
                       })}
                     </Carousel>
                     <div className="ad-container">
-                      <AdSense currentPath={currentAction} />
+                      {/* <AdSense currentPath={currentAction} /> */}
                     </div>
                   </div>
                 </section>
@@ -1748,7 +1739,7 @@ const AllList = ({ currentUser, currentAction }) => {
           )}
         </>
       ) : (
-              <M3uList finalAddress={finalAddress} currentAction={currentAction} />
+        <M3uList finalAddress={finalAddress} currentAction={currentAction} />
 
       )}
     </div>
