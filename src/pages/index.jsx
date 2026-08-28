@@ -1,9 +1,6 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import "@/app/css/main.css";
-import "@/app/css/theme.css";
-import "./styles.css";
 import { AppContext } from "@/contexts/app";
 import { getUser } from "@/utils/local";
 import { m3utojson } from "./render";
@@ -205,7 +202,7 @@ const Landing = () => {
 
       <div className="splash-header">
         <div className="logo-wrapper">
-          <img src={logoSmall.src} alt="Brand Logo" className="app-brand-logo" />
+          <Image src={logoSmall} alt="Brand Logo" className="app-brand-logo" priority />
         </div>
       </div>
 

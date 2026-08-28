@@ -5,6 +5,7 @@ import { AES, MD5, enc } from "crypto-js";
 import { Alert, CircularProgress, Slide } from "@mui/material";
 import "../app/css/main.css"
 import "../app/css/theme.css"
+import "./styles.css"
 import GoogleAnalytics from "@/utils/ga";
 import ErrorBoundary from "@/utils/errorBoundary/error";
 import { Upload } from "@mui/icons-material";

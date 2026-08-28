@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "functions": {
+    "/_app": {},
+    "/dashboard/list": {},
+    "/dashboard/live/player/videojs": {},
+    "/dashboard/live/player tvguide/videojs": {},
+    "/render": {}
+  }
+}
