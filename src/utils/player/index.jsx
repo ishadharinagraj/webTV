@@ -42,7 +42,7 @@ const Player = ({
   fav
 }) => {
   const router = useRouter();
-  const { user } = useContext(AppContext);
+  const { user, alert } = useContext(AppContext);
   const [player, setPlayer] = useState(null)
   const [speedOptionsShow, setSpeedOptionsShow] = useState(false);
   const [controlsActive, setControlsActive] = useState(true);
@@ -513,14 +513,14 @@ const Player = ({
           try {
               if (isFavourite) {
                   await removeFromFavs(user?.loginType ==='m3u' ? concatUrl(src): id, type === 'movies' ? 'Movie' : 'Series',user?.loginType ==="m3u" ? user.id : user?.dbAddress);
-                  alert.toggle({
+                  alert?.toggle({
                       show: true,
                       title: 'Removed from Favourites',
                       type: 'success'
                   });
               } else {
                   await addToFavs(user?.loginType ==='m3u' ? concatUrl(src): id, type === 'movies' ? 'Movie' : 'Series', user?.loginType ==="m3u" ? user.id : user?.dbAddress);
-                  alert.toggle({
+                  alert?.toggle({
                       show: true,
                       title: 'Added to Favourites',
                       type: 'success'
@@ -528,7 +528,7 @@ const Player = ({
               }
   
           } catch (error) {
-              alert.toggle({
+              alert?.toggle({
                   show: true,
                   title: 'Something went wrong !',
                   type: 'error'
