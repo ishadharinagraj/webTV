@@ -10,7 +10,7 @@ import { AES, enc } from "crypto-js";
 import { addToFavs, getFavourites, removeFromFavs } from "@/firebase/functions";
 import CloseIcon from '@mui/icons-material/Close';
 import RestoreIcon from '@mui/icons-material/Restore';
-import { useRouter as Navigator } from "next/navigation";
+import { useRouter } from "next/router";
 import DashboardHeader from "../dashboard/header";
 
 
@@ -76,7 +76,7 @@ const TVGUIDE = () => {
     const timeHeaderRef = useRef(null);
     const scrollContainerRef = useRef(null);
     const menuRef = useRef(null);
-    const navigate = Navigator();
+    const navigate = useRouter();
     const [categories, setCategories] = useState([]);
     const [streams, setStreams] = useState([]);
     const [currentStreams, setCurrentStreams] = useState([]);

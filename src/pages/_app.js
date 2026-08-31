@@ -15,7 +15,6 @@ import { parse } from "iptv-playlist-parser";
 import Loading from "@/utils/loading";
 import { useRouter } from "next/router";
 import { migrateData } from "@/firebase/functions";
-import Disclaimer from "@/utils/disclaimer";
 import NetworkAlert from "@/utils/networkAlert";
 
 const MyApp = ({ Component, pageProps }) => {
@@ -360,7 +359,6 @@ const MyApp = ({ Component, pageProps }) => {
             <Alert className="alert-div" style={{ fontWeight: "bold", zIndex: 99999999 }} severity={alertProps.type || "info"}>{alertProps.title}</Alert>
 
         </Slide>
-        <Disclaimer />
         <NetworkAlert />
         <GoogleAnalytics />
     </AppContext.Provider>

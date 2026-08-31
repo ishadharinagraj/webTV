@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useRouter as Navigator } from 'next/navigation';
 import "./styles.css"
 import { endpoint } from '@/config/endpoints';
 import { Backdrop, CircularProgress } from '@mui/material';
@@ -23,7 +22,6 @@ import Player from '@/utils/player';
 
 const MoviePreview = () => {
   const router = useRouter();
-  const navigate = Navigator();
   const { state } = router.query;
   const { user, streamData, alert, parentalVerified, currentPlayer } = useContext(AppContext);
   const { query } = useRouter();

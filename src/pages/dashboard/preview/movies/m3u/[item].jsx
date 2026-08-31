@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
-import { useRouter as Navigator } from 'next/navigation';
 import "../styles.css"
 import { endpoint } from '@/config/endpoints';
 import { Accordion, AccordionDetails, AccordionSummary, Backdrop, CircularProgress, Tooltip, Typography,Button } from '@mui/material';
@@ -23,7 +22,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 const MoviePreview = () => {
-    const navigate = Navigator();
     const { user, streamData, alert, parentalVerified, currentPlayer } = useContext(AppContext);
     const { query } = useRouter();
     const { item, id, stream ,state} = query;

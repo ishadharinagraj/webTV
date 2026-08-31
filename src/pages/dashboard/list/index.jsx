@@ -1,6 +1,6 @@
 import Carousel, { CarouselItem } from "@/utils/carousels/dashboard";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "react-virtualized";
 import { useContext } from "react";

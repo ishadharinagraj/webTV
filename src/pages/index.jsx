@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState, useRef } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { AppContext } from "@/contexts/app";
 import { getUser } from "@/utils/local";
@@ -24,7 +24,7 @@ import SettingsRounded from "@mui/icons-material/SettingsRounded";
 const Landing = () => {
   const router = useRouter();
   const { alert } = useContext(AppContext);
-  const pathname = useSearchParams().get("action");
+  const pathname = router.query?.action;
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [localFile, setLocalFile] = useState();
   const [playerOpen, setPlayerOpen] = useState(false);

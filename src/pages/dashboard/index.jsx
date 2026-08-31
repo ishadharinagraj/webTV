@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import "./styles.css";
 import { endpoint } from "@/config/endpoints";
 import { Box, Grow } from "@mui/material";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 import AllList from "./list";
 import DashboardHeader from "./header";
@@ -14,9 +13,9 @@ import SearchItems from "./search";
 import Loading from "@/utils/loading";
 
 const Dashboard = () => {
-  const { makeRequest } = useApi();
-  const currentAction = useSearchParams().get("view");
   const router = useRouter();
+  const { makeRequest } = useApi();
+  const currentAction = router.query?.view;
   const { user, streamData } = useContext(AppContext);
   const getBannerStreams = async (streams) => {
     const { movies } = streamData;

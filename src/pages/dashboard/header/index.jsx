@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useRouter as Navigator } from "next/navigation";
 import "./styles.css";
 import { Box, CircularProgress, Fade, Grow } from "@mui/material";
 import { ColorLens, DarkMode, LightMode, Logout } from "@mui/icons-material";
@@ -27,7 +26,6 @@ import { ALL_AVATARS, getAvatarById } from '@/constants/avatars';
 
 const DashboardHeader = ({ currentAction, searchEnabled }) => {
   const router = useRouter();
-  const navigate = Navigator();
   const { streamData, theme, user, homeM3uStreams, m3uFileUpload } =
     useContext(AppContext);
   const [currentInfo, setCurrentInfo] = useState();

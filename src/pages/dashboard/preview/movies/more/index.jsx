@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import "./styles.css";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import placeholderImage from "@/assets/placeholder.png";
 import { AppContext } from "@/contexts/app";
@@ -20,10 +20,9 @@ import 'swiper/css';
 
 const CategoryMorePage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const catId = searchParams?.get("cat_id");
-  const catName = searchParams?.get("cat_name");
-  const action = searchParams?.get("action") || "movies";
+  const catId = router.query?.cat_id;
+  const catName = router.query?.cat_name;
+  const action = router.query?.action || "movies";
 
   const { user, alert, streamData, parentalPin } = useContext(AppContext);
   const { movies, series } = streamData;
@@ -330,9 +329,9 @@ const CategoryMorePage = () => {
 };
 
 const MoreLikeThis = ({ movies: propsMovies }) => {
-  const searchParams = useSearchParams();
-  const catId = searchParams?.get("cat_id");
-  const catName = searchParams?.get("cat_name");
+  const router = useRouter();
+  const catId = router.query?.cat_id;
+  const catName = router.query?.cat_name;
 
   if (catId || catName) {
     return <CategoryMorePage />;
