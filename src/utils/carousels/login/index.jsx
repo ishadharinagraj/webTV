@@ -11,14 +11,17 @@ export const CarouselItem = ({ children, width }) => {
   );
 };
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, autoSlideInterval = 7000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  const count = React.Children.count(children);
+
   const updateIndex = (newIndex) => {
+    if (count === 0) return;
     if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
+      newIndex = count - 1;
+    } else if (newIndex >= count) {
       newIndex = 0;
     }
 
@@ -26,18 +29,18 @@ const Carousel = ({ children }) => {
   };
 
   useEffect(() => {
+    if (!children || count <= 1 || paused) return;
+
     const interval = setInterval(() => {
-      if (!paused) {
-        updateIndex(activeIndex + 1);
-      }
-    }, 3000);
+      setActiveIndex((prev) => (prev === count - 1 ? 0 : prev + 1));
+    }, autoSlideInterval);
 
     return () => {
       if (interval) {
         clearInterval(interval);
       }
     };
-  });
+  }, [children, count, paused, autoSlideInterval]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),

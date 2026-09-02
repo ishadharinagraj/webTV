@@ -56,4 +56,169 @@
     display: flex;
     justify-content: center;
   }
-}/*# sourceMappingURL=styles.css.map */
+}
+
+/* Banner Dark Gradient Overlay for preview page text readability */
+.mainBanner .item .thumb,
+.previewMainBanner .item .thumb {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+}
+
+.mainBanner .item .thumb img,
+.previewMainBanner .item .thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  filter: brightness(0.85);
+}
+
+.mainBanner .item .thumb .effectGrad,
+.previewMainBanner .item .thumb .effectGrad {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(90deg, rgba(8, 12, 24, 0.92) 0%, rgba(8, 12, 24, 0.65) 40%, rgba(8, 12, 24, 0.25) 75%, transparent 100%),
+              linear-gradient(180deg, transparent 45%, #080c18 100%) !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+.mainBanner .item .info,
+.previewMainBanner .item .info {
+  position: relative !important;
+  z-index: 5 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+  max-width: 950px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.previewPlayInfo {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-top: 4px !important;
+  margin-bottom: 2px !important;
+  width: 100% !important;
+}
+
+.meta-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  white-space: nowrap !important;
+}
+
+.rating-pill {
+  background: rgba(254, 192, 7, 0.18) !important;
+  border-color: rgba(254, 192, 7, 0.4) !important;
+  color: #fef08a !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+.quality-pill {
+  background: rgba(99, 102, 241, 0.22) !important;
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  color: #a5b4fc !important;
+  font-weight: 700 !important;
+}
+
+.preview-meta-details {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-top: 4px !important;
+  max-width: 880px !important;
+}
+
+.meta-row {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  font-size: 16px !important;
+}
+
+.meta-label {
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+  min-width: 110px !important;
+  font-size: 16px !important;
+  flex-shrink: 0 !important;
+}
+
+.meta-val {
+  color: #f1f5f9 !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.description-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
+}
+
+.preview-description {
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+  color: #cbd5e1 !important;
+  margin: 4px 0 2px 0 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-width: 850px !important;
+  transition: all 0.3s ease !important;
+}
+
+.preview-description.expanded {
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+
+.toggle-desc-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #a855f7 !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  padding: 4px 0 !important;
+  margin-bottom: 6px !important;
+  transition: color 0.2s ease !important;
+}
+
+.toggle-desc-btn:hover {
+  color: #c084fc !important;
+  text-decoration: underline !important;
+}

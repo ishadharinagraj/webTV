@@ -14,22 +14,22 @@
 .mainBanner {
   position: relative;
   width: 100%;
-  height: 80vh !important;
-  min-height: 600px !important;
+  height: 850px !important;
+  min-height: 850px !important;
   max-height: none !important;
   margin-bottom: 15px !important;
   overflow: hidden;
 }
 
 .mainBanner .carousel-dashboard {
-  height: 80vh !important;
-  min-height: 600px !important;
+  height: 850px !important;
+  min-height: 850px !important;
   max-height: none !important;
 }
 
 .mainBanner .carousel-dashboard .inner {
-  height: 80vh !important;
-  min-height: 600px !important;
+  height: 850px !important;
+  min-height: 850px !important;
 }
 
 .mainBanner .carousel-dashboard .indicators,
@@ -39,8 +39,8 @@
 }
 
 .mainBanner .carousel-item {
-  height: 80vh !important;
-  min-height: 600px !important;
+  height: 850px !important;
+  min-height: 850px !important;
   position: relative;
   overflow: hidden;
   display: flex !important;
@@ -51,8 +51,8 @@
 .mainBanner .item {
   position: relative;
   width: 100%;
-  height: 80vh !important;
-  min-height: 600px !important;
+  height: 850px !important;
+  min-height: 850px !important;
   display: flex;
   align-items: flex-end;
 }
@@ -69,13 +69,24 @@
   overflow: hidden !important;
 }
 
-.mainBanner .item .thumb img {
+.mainBanner .item .thumb img,
+.carousel-dashboard img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   object-position: center !important;
   display: block !important;
   filter: brightness(0.88);
+  transform: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.mainBanner:hover .item .thumb img,
+.mainBanner .item:hover .thumb img,
+.carousel-dashboard:hover img,
+.carousel-dashboard img:hover {
+  transform: none !important;
+  scale: 1 !important;
 }
 
 /* Disable legacy half-width solid black pseudo elements */
@@ -96,7 +107,7 @@ body:not(.light) .mainBanner .item .thumb::after {
   width: 100% !important;
   height: 100% !important;
   background: linear-gradient(90deg, rgba(8, 12, 24, 0.88) 0%, rgba(8, 12, 24, 0.5) 35%, rgba(8, 12, 24, 0.15) 70%, transparent 100%),
-              linear-gradient(180deg, transparent 65%, #080c18 100%) !important;
+    linear-gradient(180deg, transparent 65%, #080c18 100%) !important;
   z-index: 2 !important;
   pointer-events: none !important;
 }
@@ -124,7 +135,7 @@ body:not(.light) .mainBanner .item .thumb::after {
 }
 
 .mainBanner .item .info .text {
-  font-size: 14px !important;
+  font-size: 18px !important;
   line-height: 1.6 !important;
   color: #cbd5e1 !important;
   margin: 0;
@@ -157,6 +168,7 @@ body:not(.light) .mainBanner .item .thumb::after {
   border: none !important;
   box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45) !important;
   transition: all 0.25s ease !important;
+  white-space: nowrap !important;
 }
 
 .mainBanner .item .info .btnGroup .playBtn:hover {
@@ -164,7 +176,8 @@ body:not(.light) .mainBanner .item .thumb::after {
   box-shadow: 0 12px 30px rgba(99, 102, 241, 0.65) !important;
 }
 
-.mainBanner .item .info .btnGroup button {
+.mainBanner .item .info .btnGroup button,
+.mainBanner .item .info .btnGroup .infoBtn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -179,9 +192,12 @@ body:not(.light) .mainBanner .item .thumb::after {
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   cursor: pointer !important;
   transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
 }
 
-.mainBanner .item .info .btnGroup button:hover {
+.mainBanner .item .info .btnGroup button:hover,
+.mainBanner .item .info .btnGroup .infoBtn:hover {
   background: rgba(255, 255, 255, 0.22) !important;
 }
 
@@ -190,14 +206,16 @@ body:not(.light) .mainBanner .item .thumb::after {
   padding: 10px 30px 20px 30px !important;
 }
 
-.category .h3 {
+.category .h3,
+.category-header-row .h3,
+.top10-category-section .h3 {
   display: inline-flex !important;
   align-items: center !important;
-  font-size: 20px !important;
+  font-size: 30px !important;
   font-weight: 700 !important;
   color: #ffffff !important;
-  margin-bottom: 12px !important;
-  letter-spacing: -0.3px;
+  margin-bottom: 14px !important;
+  letter-spacing: -0.4px !important;
 }
 
 .category .listSlider {
@@ -211,20 +229,32 @@ body:not(.light) .mainBanner .item .thumb::after {
 }
 
 .category .item,
-.list-container .item {
+.list-container .item,
+.ReactVirtualized__Grid .item,
+.ReactVirtualized__Grid__innerScrollContainer .item,
+body:not(.light) .category .item,
+body.light .category .item {
   position: relative;
-  width: 160px !important;
-  height: 240px !important;
+  width: 200px !important;
+  height: 280px !important;
   border-radius: 12px !important;
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
   overflow: hidden !important;
   background-color: #121829 !important;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4) !important;
-  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   cursor: pointer !important;
 }
 
 .category .item:hover,
-.list-container .item:hover {
+.list-container .item:hover,
+body:not(.light) .category .item:hover,
+body.light .category .item:hover {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
   transform: translateY(-6px) scale(1.04) !important;
   box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35) !important;
   z-index: 10 !important;
@@ -359,7 +389,7 @@ body:not(.light) .mainBanner .item .thumb::after {
 }
 
 .top10-category-section .h3 {
-  font-size: 20px !important;
+  font-size: 30px !important;
   font-weight: 700 !important;
   color: #e5e5e5 !important;
   margin-bottom: 14px !important;
@@ -373,7 +403,7 @@ body:not(.light) .mainBanner .item .thumb::after {
   cursor: pointer !important;
   user-select: none !important;
   flex-shrink: 0 !important;
-  height: 200px !important;
+  height: 280px !important;
   padding-left: 0 !important;
   margin-right: 25px !important;
 }
@@ -388,8 +418,8 @@ body:not(.light) .mainBanner .item .thumb::after {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 200px !important;
-  font-size: 155px !important;
+  height: 280px !important;
+  font-size: 215px !important;
   font-weight: 900 !important;
   line-height: 1 !important;
   font-family: Impact, "Arial Black", "Helvetica Neue", sans-serif !important;
@@ -404,9 +434,9 @@ body:not(.light) .mainBanner .item .thumb::after {
 /* Poster Card (Matches Height of Number) */
 .top10-poster-card {
   position: relative !important;
-  width: 135px !important;
-  height: 200px !important;
-  border-radius: 6px !important;
+  width: 200px !important;
+  height: 280px !important;
+  border-radius: 12px !important;
   overflow: hidden !important;
   z-index: 3 !important;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7) !important;
@@ -446,14 +476,19 @@ body:not(.light) .mainBanner .item .thumb::after {
 
 /* --- Netflix / Hotstar Hover Mini-Preview Card Portal --- */
 .hover-preview-card-portal {
-  animation: hoverCardFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: hoverCardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   pointer-events: auto;
+  will-change: transform, opacity;
+}
+
+.hover-preview-card-portal.closing {
+  animation: hoverCardFadeOut 0.22s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 @keyframes hoverCardFadeIn {
   from {
     opacity: 0;
-    transform: scale(0.92) translateY(6px);
+    transform: scale(0.88) translateY(12px);
   }
 
   to {
@@ -462,34 +497,48 @@ body:not(.light) .mainBanner .item .thumb::after {
   }
 }
 
+@keyframes hoverCardFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+}
+
 .hover-card-inner {
   width: 100%;
   background: #141b2d;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.95), 0 0 25px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 28px 75px rgba(0, 0, 0, 0.95), 0 0 30px rgba(99, 102, 241, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hover-card-thumb {
   position: relative;
   width: 100%;
-  height: 165px;
+  height: 350px;
   overflow: hidden;
   background-color: #0b0f19;
 }
 
 .hover-card-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block !important;
 }
 
 .hover-card-thumb-grad {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, #141b2d 100%);
+  background: linear-gradient(180deg, transparent 60%, #141b2d 100%);
   pointer-events: none;
 }
 
@@ -530,7 +579,8 @@ body:not(.light) .mainBanner .item .thumb::after {
 }
 
 .hover-card-add-btn,
-.hover-card-fav-btn {
+.hover-card-fav-btn,
+.hover-card-info-btn {
   width: 38px;
   height: 38px;
   display: flex;
@@ -546,13 +596,9 @@ body:not(.light) .mainBanner .item .thumb::after {
 }
 
 .hover-card-add-btn:hover,
-.hover-card-fav-btn:hover {
+.hover-card-fav-btn:hover,
+.hover-card-info-btn:hover {
   background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.05);
-}
-
-.hover-card-fav-btn:hover {
-  background: rgba(255, 255, 255, 0.22);
   transform: scale(1.05);
 }
 

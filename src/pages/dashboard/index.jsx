@@ -115,12 +115,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (user && user.loginType !== "m3u") {
-      getData(endpoint.getMovies, "movies");
-      getData(endpoint.getMovieCategories, "moviesCategories");
-      getData(endpoint.getSeries, "series");
-      getData(endpoint.getSeriesCategories, "seriesCategories");
-      getData(endpoint.getLiveStreams, "livetv");
-      getData(endpoint.getLiveCategories, "liveCategories");
+      if (!dataFetched()) {
+        getData(endpoint.getMovies, "movies");
+        getData(endpoint.getMovieCategories, "moviesCategories");
+        getData(endpoint.getSeries, "series");
+        getData(endpoint.getSeriesCategories, "seriesCategories");
+        getData(endpoint.getLiveStreams, "livetv");
+        getData(endpoint.getLiveCategories, "liveCategories");
+      }
     }
   }, [user, currentAction]);
   useEffect(() => {

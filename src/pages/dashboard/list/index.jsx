@@ -69,9 +69,21 @@ const AllList = ({ currentUser, currentAction }) => {
   const [currentRecentItem, setCurrentRecentItem] = useState(null);
 
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [closingHover, setClosingHover] = useState(false);
   const hoverTimer = useRef(null);
+  const closeTimer = useRef(null);
   const [favouriteIds, setFavouriteIds] = useState([]);
   const [myListIds, setMyListIds] = useState([]);
+
+  const closeHoverCard = () => {
+    if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setClosingHover(true);
+    closeTimer.current = setTimeout(() => {
+      setHoveredCard(null);
+      setClosingHover(false);
+    }, 220);
+  };
 
   const handleCardMouseEnter = (e, item) => {
     if (!item) return;
@@ -80,9 +92,11 @@ const AllList = ({ currentUser, currentAction }) => {
     const rect = target.getBoundingClientRect();
     if (!rect || (rect.width === 0 && rect.height === 0)) return;
     if (hoverTimer.current) clearTimeout(hoverTimer.current);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setClosingHover(false);
     hoverTimer.current = setTimeout(() => {
       setHoveredCard({ item, rect });
-    }, 120);
+    }, 220);
   };
 
   const handleCardMouseLeave = (e) => {
@@ -91,7 +105,7 @@ const AllList = ({ currentUser, currentAction }) => {
     if (relatedTarget && relatedTarget.closest && relatedTarget.closest(".hover-preview-card-portal")) {
       return;
     }
-    setHoveredCard(null);
+    closeHoverCard();
   };
 
   useEffect(() => {
@@ -142,7 +156,6 @@ const AllList = ({ currentUser, currentAction }) => {
               return (
                 <div
                   key={id || index}
-                  onClick={handleItem}
                   onMouseEnter={(e) => handleCardMouseEnter(e, movie)}
                   onMouseLeave={handleCardMouseLeave}
                   className="top10-card-wrapper"
@@ -162,7 +175,6 @@ const AllList = ({ currentUser, currentAction }) => {
                     ) : (
                       <Image alt="placeholder" layout="fill" src={placeholderImage} objectFit="cover" />
                     )}
-                    <span className="top10-badge">RECENTLY ADDED</span>
                   </div>
                 </div>
               );
@@ -213,10 +225,10 @@ const AllList = ({ currentUser, currentAction }) => {
     const isFavourite = favouriteIds.includes(String(id));
     const isMyList = myListIds.includes(String(id));
 
-    const cardWidth = 310;
-    const cardHeight = 350;
+    const cardWidth = 380;
+    const cardHeight = 470;
     let left = rect.left + rect.width / 2 - cardWidth / 2;
-    let top = rect.top - 15;
+    let top = rect.top - 20;
 
     const screenW = windowSize.width || (typeof window !== "undefined" ? window.innerWidth : 1200);
     const screenH = windowSize.height || (typeof window !== "undefined" ? window.innerHeight : 800);
@@ -242,9 +254,21 @@ const AllList = ({ currentUser, currentAction }) => {
       }
     };
 
+    const handleInfoClick = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const actionType = item.actionType || (currentAction === "series" ? "series" : "movies");
+      const streamId = item[currentKeys.id] || item.stream_id || item.series_id || item.id;
+      if (!streamId) return;
+      setHoveredCard(null);
+      router.push(`/dashboard/preview/${actionType}/${streamId}`);
+    };
+
     return (
       <div
-        className="hover-preview-card-portal"
+        className={`hover-preview-card-portal ${closingHover ? "closing" : ""}`}
         style={{
           position: "fixed",
           top: top,
@@ -254,14 +278,18 @@ const AllList = ({ currentUser, currentAction }) => {
         }}
         onMouseEnter={() => {
           if (hoverTimer.current) clearTimeout(hoverTimer.current);
+          if (closeTimer.current) clearTimeout(closeTimer.current);
+          setClosingHover(false);
         }}
         onMouseLeave={() => {
-          setHoveredCard(null);
+          closeHoverCard();
         }}
       >
         <div className="hover-card-inner">
           <div className="hover-card-thumb">
+            <img className="hover-card-thumb-bg" src={imgUrl} alt="" />
             <img
+              className="hover-card-thumb-img"
               src={imgUrl}
               alt={title}
               onError={(e) => {
@@ -303,18 +331,31 @@ const AllList = ({ currentUser, currentAction }) => {
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
               </button>
+
+              <button
+                type="button"
+                onClick={handleInfoClick}
+                className="hover-card-info-btn"
+                title="More Info"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="16" x2="12" y2="12" />
+                  <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+              </button>
             </div>
 
             <div className="hover-card-meta">
               <h4 className="hover-card-title">{title}</h4>
               <div className="hover-card-tags">
-                {rating !== "NaN" && Number(rating) > 0 && (
+                {/* {rating !== "NaN" && Number(rating) > 0 && (
                   <span className="hover-tag rating">★ {rating}</span>
-                )}
-                {item.added && (
+                )} */}
+                {/* {item.added && (
                   <span className="hover-tag">{formattedDate(item.added)}</span>
-                )}
-                <span className="hover-tag">{currentAction === "series" ? "Series" : "Movie"}</span>
+                )} */}
+                {/* <span className="hover-tag">{currentAction === "series" ? "Series" : "Movie"}</span> */}
               </div>
               {item.plot || item.description ? (
                 <p className="hover-card-plot">
@@ -660,7 +701,6 @@ const AllList = ({ currentUser, currentAction }) => {
         return (
           <div style={{ ...args.style, padding: 5, paddingTop: 6 }}>
             <div
-              onClick={handleItem}
               onMouseEnter={(e) => handleCardMouseEnter(e, filteredComp)}
               onMouseLeave={handleCardMouseLeave}
               key={args.key}
@@ -780,7 +820,7 @@ const AllList = ({ currentUser, currentAction }) => {
 
         const updateScroll = () => {
           const { scrollLeft, scrollWidth, clientWidth } = gridEl;
-          const totalContentWidth = filtered ? filtered.length * 173 : scrollWidth;
+          const totalContentWidth = filtered ? filtered.length * 212 : scrollWidth;
           const maxContainerWidth = clientWidth || (window.innerWidth - 60);
           const isOverflowing = totalContentWidth > maxContainerWidth + 10;
 
@@ -810,7 +850,7 @@ const AllList = ({ currentUser, currentAction }) => {
           });
           setTimeout(() => {
             const { scrollLeft, scrollWidth, clientWidth } = gridEl;
-            const totalContentWidth = filtered ? filtered.length * 173 : scrollWidth;
+            const totalContentWidth = filtered ? filtered.length * 212 : scrollWidth;
             const maxContainerWidth = clientWidth || (window.innerWidth - 60);
             const isOverflowing = totalContentWidth > maxContainerWidth + 10;
             setCanScrollLeft(isOverflowing && scrollLeft > 5);
@@ -836,9 +876,9 @@ const AllList = ({ currentUser, currentAction }) => {
                   )
                 }
                 style={{
-                  color: "rgba(255, 255, 255, 0.7)",
-                  fontSize: "14px",
-                  fontWeight: "500",
+                  color: "rgba(255, 255, 255, 0.75)",
+                  fontSize: "17px",
+                  fontWeight: "600",
                   cursor: "pointer",
                   transition: "color 0.2s ease"
                 }}
@@ -905,10 +945,10 @@ const AllList = ({ currentUser, currentAction }) => {
                   // <AutoSizer disableHeight>
                   //  {({ width }) => (
                   <Grid
-                    height={270}
+                    height={315}
                     cellRenderer={innerElement}
                     columnCount={filtered ? filtered.length : 0}
-                    rowHeight={250}
+                    rowHeight={295}
                     style={{
                       overflowY: "hidden",
                       overflowX: "hidden",
@@ -916,7 +956,7 @@ const AllList = ({ currentUser, currentAction }) => {
                       paddingLeft: 5,
                     }}
                     rowCount={1}
-                    columnWidth={173}
+                    columnWidth={212}
                     width={windowSize.width - window.innerWidth / 20}
                   // width={width}
                   />
@@ -1015,7 +1055,7 @@ const AllList = ({ currentUser, currentAction }) => {
                 }
               };
               return (
-                <div key={index} onClick={handleItem}>
+                <div key={index}>
                   <div
                     style={{
                       marginTop: 10,
@@ -1216,7 +1256,6 @@ const AllList = ({ currentUser, currentAction }) => {
                   }}
                 >
                   <div
-                    onClick={handleItem}
                     onMouseEnter={(e) => handleCardMouseEnter(e, movie.info ? { ...movie.info, ...movie } : movie)}
                     onMouseLeave={handleCardMouseLeave}
                     key={index}
@@ -1339,10 +1378,7 @@ const AllList = ({ currentUser, currentAction }) => {
   }, [user]);
 
   useEffect(() => {
-    setShow(false);
-    setTimeout(() => {
-      setShow(true);
-    }, 500);
+    setShow(true);
     setFavouriteMovies(null);
     setRecents([]);
   }, [currentAction]);
@@ -1629,6 +1665,7 @@ const AllList = ({ currentUser, currentAction }) => {
                           currentAction === "movies"
                             ? movie?.movie_data?.stream_id
                             : movie?.series_id;
+                        const isAddedToList = myListIds.includes(String(id));
                         const aboutMovie =
                           currentAction === "movies"
                             ? movie?.info?.description
@@ -1665,11 +1702,7 @@ const AllList = ({ currentUser, currentAction }) => {
                                 </p>
                                 <div className="btnGroup">
                                   <Link
-                                    href={`/dashboard/preview/${currentAction}/${currentAction === "movies"
-                                      ? movie?.movie_data?.stream_id
-                                      : currentSelected.streams[index]
-                                        .series_id
-                                      }`}
+                                    href={`/dashboard/preview/${currentAction}/${id}?state=play`}
                                     className="btn btn-primary playBtn"
                                   >
                                     <svg
@@ -1704,8 +1737,45 @@ const AllList = ({ currentUser, currentAction }) => {
                                         fill={liked ? "#FF0000" : "white"}
                                       />{" "}
                                     </svg>{" "}
-                                    My Favourite
+                                    {liked ? "Favorited" : "Favorite"}
                                   </button>
+                                  <button
+                                    onClick={() => handleMyList(id, isAddedToList, currentAction)}
+                                    className="btn btn-primary"
+                                  >
+                                    <svg
+                                      width="22"
+                                      height="22"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M12 4V20M4 12H20"
+                                        stroke={isAddedToList ? "#FF0000" : "white"}
+                                        strokeWidth="3.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                      />
+                                    </svg>
+                                    {isAddedToList ? "Added to list" : "Add to list"}
+                                  </button>
+                                  <Link
+                                    href={`/dashboard/preview/${currentAction}/${id}`}
+                                    className="btn btn-primary infoBtn"
+                                  >
+                                    <svg
+                                      width="22"
+                                      height="22"
+                                      viewBox="0 0 24 24"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2.2" />
+                                      <path d="M12 16V11M12 7.5H12.01" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                    More Info
+                                  </Link>
                                 </div>
                               </div>
                             </div>

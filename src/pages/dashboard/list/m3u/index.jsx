@@ -821,10 +821,10 @@ const M3uList = ({ currentAction }) => {
               ref={(element) => (refs.current[index] = element)}
             >
               <Grid
-                height={270}
+                height={315}
                 cellRenderer={innerElement}
                 columnCount={filtered ? filtered.length : 0}
-                rowHeight={250}
+                rowHeight={295}
                 style={{
                   overflowY: "hidden",
                   overflowX: "hidden",
@@ -832,7 +832,7 @@ const M3uList = ({ currentAction }) => {
                   paddingLeft: 5,
                 }}
                 rowCount={1}
-                columnWidth={173}
+                columnWidth={212}
                 width={windowSize.width - window.innerWidth / 20}
               />
             </div>
@@ -1161,10 +1161,10 @@ const M3uList = ({ currentAction }) => {
               ref={(element) => (refs.current[index] = element)}
             >
               <Grid
-                height={270}
+                height={315}
                 cellRenderer={innerElement}
                 columnCount={filtered ? filtered.length : 0}
-                rowHeight={250}
+                rowHeight={295}
                 style={{
                   overflowY: "hidden",
                   overflowX: "hidden",
@@ -1172,7 +1172,7 @@ const M3uList = ({ currentAction }) => {
                   paddingLeft: 5,
                 }}
                 rowCount={1}
-                columnWidth={173}
+                columnWidth={212}
                 width={windowSize.width - window.innerWidth / 20}
               />
             </div>

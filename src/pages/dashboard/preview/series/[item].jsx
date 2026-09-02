@@ -614,7 +614,7 @@ const SeriesPreview = () => {
                     {/* More Like This Recommendations */}
                     {relatedSeries.length > 0 && (
                         <section className="netflix-recommendations-section">
-                            <h3>More Like This</h3>
+                            <h3>You May Also Like</h3>
                             <div className="netflix-rec-grid">
                                 {relatedSeries.map((rec, rIdx) => (
                                     <div

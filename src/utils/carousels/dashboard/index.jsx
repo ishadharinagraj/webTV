@@ -11,41 +11,32 @@ export const CarouselItem = ({ children, width }) => {
   );
 };
 
-const Carousel = ({ children }) => {
+const Carousel = ({ children, autoSlideInterval = 6000 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const [timer, setTimer] = useState(null)
+
+  const count = React.Children.count(children);
 
   const updateIndex = (newIndex) => {
+    if (count === 0) return;
     if (newIndex < 0) {
-      newIndex = React.Children.count(children) - 1;
-    } else if (newIndex >= React.Children.count(children)) {
+      newIndex = count - 1;
+    } else if (newIndex >= count) {
       newIndex = 0;
     }
-
-    // setActiveIndex(newIndex);
+    setActiveIndex(newIndex);
   };
 
   useEffect(() => {
-    if (children.length > 0 && !timer) {
-      setTimer(
-        setInterval(() => {
-          // if (!paused) {
-          // updateIndex(activeIndex + 1);
-          setActiveIndex(prev => {
-            updateIndex(prev === children.length - 1 ? 0 : prev + 1);
-            return prev === children.length - 1 ? 0 : prev + 1
-          })
-          // }
-        }, 3000)
-      )
-    }
-    // return () => {
-    //   if (interval) {
-    //     clearInterval(interval);
-    //   }
-    // };
-  }, [children]);
+    if (!children || count <= 1) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev === count - 1 ? 0 : prev + 1));
+    }, autoSlideInterval);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [children, count, autoSlideInterval]);
 
   const handlers = useSwipeable({
     onSwipedLeft: () => updateIndex(activeIndex + 1),
@@ -56,14 +47,12 @@ const Carousel = ({ children }) => {
     <div
       {...handlers}
       className="carousel-dashboard"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
     >
       <div
         className="inner"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
-        {React.Children.map(children, (child, index) => {
+        {React.Children.map(children, (child) => {
           return React.cloneElement(child, { width: "100%" });
         })}
       </div>
@@ -71,23 +60,9 @@ const Carousel = ({ children }) => {
         {React.Children.map(children, (child, index) => {
           return (
             <div
+              key={index}
               className={index === activeIndex ? "active-indicator" : "indicator"}
-              onClick={() => {
-                clearInterval(timer)
-                setTimer(null)
-                updateIndex(index);
-                setActiveIndex(index);
-                setTimeout(() => {
-                  setTimer(
-                    setInterval(() => {
-                      setActiveIndex(prev => {
-                        updateIndex(prev === children.length - 1 ? 0 : prev + 1);
-                        return prev === children.length - 1 ? 0 : prev + 1
-                      })
-                    }, 3000)
-                  )
-                }, 2000);
-              }}
+              onClick={() => updateIndex(index)}
             >
             </div>
           );

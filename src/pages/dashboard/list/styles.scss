@@ -102,19 +102,47 @@
 
 }
 
-@media only screen and (max-width:1300px) {
-   .list-container {
-      .category .item {
-         height: 200px;
-      }
+.category .h3,
+.category-header-row .h3,
+.top10-category-section .h3 {
+   font-size: 30px !important;
+   font-weight: 700 !important;
+}
 
-      .ReactVirtualized__Grid {
-         .ReactVirtualized__Grid__innerScrollContainer {
-            .item {
-               height: 200px;
+.category .item,
+.list-container .item,
+.ReactVirtualized__Grid .item,
+.ReactVirtualized__Grid__innerScrollContainer .item {
+   width: 200px !important;
+   height: 280px !important;
+}
+
+.mainBanner {
+   height: 850px !important;
+   min-height: 850px !important;
+   .carousel-dashboard, .carousel-dashboard .inner, .carousel-item, .item {
+      height: 850px !important;
+      min-height: 850px !important;
+   }
+   .item {
+      .thumb img {
+         transform: none !important;
+         &:hover {
+            transform: none !important;
+            scale: 1 !important;
+         }
+      }
+      .info {
+         .text {
+            font-size: 18px !important;
+            line-height: 1.6 !important;
+            color: #cbd5e1 !important;
+         }
+         .btnGroup {
+            button, .playBtn, .infoBtn {
+               white-space: nowrap !important;
             }
          }
       }
    }
-
 }
