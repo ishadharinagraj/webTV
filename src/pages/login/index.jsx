@@ -22,6 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { getUser } from '@/utils/local';
 import { getRandomHexColor } from '@/methods/getRandomColor';
 import { getDbAddress } from '../_app';
+import { validateDns } from '@/utils/dnsValidation';
 
 const Login = () => {
     const router = useRouter();
@@ -168,6 +169,15 @@ const Login = () => {
                 setLoading(false);
             }, 400);
         } else {
+            // Check DNS Whitelist status
+            const dnsCheck = await validateDns(serverAddress);
+            if (!dnsCheck.isWhitelisted) {
+                toast.error(dnsCheck.message || "This Server DNS is not whitelisted!");
+                setLoading(false);
+                setHandleLoginClicked(false);
+                return;
+            }
+
             const existedUser = getUser();
             if (existedUser) {
                 const existingUsers = Object.values(existedUser);

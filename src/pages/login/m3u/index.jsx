@@ -34,6 +34,7 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import ViewListIcon from "@mui/icons-material/ViewList";
+import { validateDns } from "@/utils/dnsValidation";
 
 const Login = () => {
   const router = useRouter();
@@ -268,11 +269,22 @@ const existedUser = getUser();
           const isValidUrl = m3uUrl.includes("m3u" || "m3u8");
           if(isValidUrl){
           try {
-            const isUserExisted =   checkExistingUser();
-           if(isUserExisted){
-            return;
-           }
+            const isUserExisted = checkExistingUser();
+            if(isUserExisted){
+             return;
+            }
             setLoading(true);
+            const dnsCheck = await validateDns(m3uUrl);
+            if (!dnsCheck.isWhitelisted) {
+              alert.toggle({
+                show: true,
+                title: dnsCheck.message || "This Server DNS is not whitelisted!",
+                type: "error",
+              });
+              setLoading(false);
+              setHandleLoginClicked(false);
+              return;
+            }
             const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/login/getM3uData`,{ M3uUrl: m3uUrl });
              const parsedData = response.data?.data;
             if (response?.status === 200 && response?.data?.success === true) {

@@ -13,6 +13,7 @@ import {
 import { AES, enc } from 'crypto-js';
 import { convertToHttp } from '@/methods/concatUrl';
 import { BOY_AVATARS, GIRL_AVATARS } from '@/constants/avatars';
+import { validateDns } from '@/utils/dnsValidation';
 
 const EditModal = ({ open, defaultPlaylist, onClose, onEdit }) => {
     const [playlistName, setPlaylistName] = useState('');
@@ -53,8 +54,15 @@ const EditModal = ({ open, defaultPlaylist, onClose, onEdit }) => {
         }
     }, [defaultPlaylist]);
 
-    const handleSave = (e) => {
+    const handleSave = async (e) => {
         e.preventDefault();
+        if (loginType !== 'm3u' && serverUrl) {
+            const dnsCheck = await validateDns(serverUrl);
+            if (!dnsCheck.isWhitelisted) {
+                alert(dnsCheck.message || "This Server DNS is not whitelisted!");
+                return;
+            }
+        }
         const ecryptedPassword = AES.encrypt(password, 'thisispassword').toString();
         const encryptedServerAddress = AES.encrypt(convertToHttp(serverUrl), "thisisserveraddress").toString();
         const details = loginType !== 'm3u' ? {

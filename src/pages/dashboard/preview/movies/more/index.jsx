@@ -97,15 +97,18 @@ const CategoryMorePage = () => {
     }
   };
 
-  const handleMyList = async (id, isListed, mediaType) => {
+  const handleMyList = async (itemObjOrId, isListed, mediaType) => {
     if (!finalAddress) return;
     const itemPath = mediaType === "series" ? "Series" : "Movie";
+    const id = typeof itemObjOrId === 'object' && itemObjOrId !== null
+      ? (itemObjOrId.stream_id || itemObjOrId.series_id || itemObjOrId.id)
+      : itemObjOrId;
     try {
       if (isListed) {
         await removeFromWatchlist(id, itemPath, finalAddress);
         alert.toggle({ title: "Removed from My List", show: true, type: "success" });
       } else {
-        await addToWatchlist(id, itemPath, finalAddress);
+        await addToWatchlist(itemObjOrId, itemPath, finalAddress);
         alert.toggle({ title: "Added to My List", show: true, type: "success" });
       }
       fetchFavsAndList();

@@ -23,6 +23,7 @@ import { deleteFileByName } from '@/utils/indexDb/ indexedDB'
 import { ALL_AVATARS, getAvatarById } from '@/constants/avatars';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { validateDns } from '@/utils/dnsValidation';
 
 
 const Profiles = () => {
@@ -117,6 +118,22 @@ const Profiles = () => {
     setLoading(true);
     const { username, password, server, playlist, id, parentalPin, loginType, M3U, player, formatted } = profileUser;
     if (loginType !== 'm3u') {
+      try {
+        const decryptedServerAddress = AES.decrypt(server, "thisisserveraddress").toString(enc.Utf8);
+        const dnsCheck = await validateDns(decryptedServerAddress);
+        if (!dnsCheck.isWhitelisted) {
+          alert.toggle({
+            show: true,
+            title: dnsCheck.message || "This Server DNS is not whitelisted!",
+            type: "error",
+          });
+          setLoading(false);
+          return;
+        }
+      } catch (err) {
+        console.error("DNS decrypt error:", err);
+      }
+
       const dataToSend = {
         username: username,
         password: password,

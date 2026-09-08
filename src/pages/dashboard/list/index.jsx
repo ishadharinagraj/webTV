@@ -8,9 +8,12 @@ import { AppContext } from "@/contexts/app";
 import useApi from "@/hooks/useApi";
 import {
   addToFavs,
+  addToWatchlist,
   getFavourites,
   getRecents,
+  getWatchlist,
   removeFromFavs,
+  removeFromWatchlist,
   removeMovieFromRecents,
 } from "@/firebase/functions";
 import Scrollable from "@/utils/scrollable";
@@ -189,24 +192,28 @@ const AllList = ({ currentUser, currentAction }) => {
     const strId = String(id);
     const itemAction = action || currentAction;
     const pathType = itemAction === "movies" ? "Movie" : itemAction === "series" ? "Series" : "LiveTv";
+    const itemObj = findItem(strId) || {
+      id: strId,
+      stream_id: strId,
+      series_id: strId,
+      actionType: itemAction
+    };
 
     if (isMyList) {
       setMyListIds((prev) => prev.filter((i) => i !== strId));
-      setFavouriteIds((prev) => prev.filter((i) => i !== strId));
       if (alert?.toggle) alert.toggle({ title: "Removed from My List", show: true, type: "success" });
     } else {
-      setMyListIds((prev) => [...prev, strId]);
-      setFavouriteIds((prev) => [...prev, strId]);
+      setMyListIds((prev) => [...new Set([...prev, strId])]);
       if (alert?.toggle) alert.toggle({ title: "Added to My List", show: true, type: "success" });
     }
 
     try {
       if (isMyList) {
-        await removeFromFavs(strId, pathType, finalAddress);
         await removeFromWatchlist(strId, pathType, finalAddress);
+        await removeFromFavs(strId, pathType, finalAddress);
       } else {
+        await addToWatchlist(itemObj, pathType, finalAddress);
         await addToFavs(strId, pathType, finalAddress);
-        await addToWatchlist(strId, pathType, finalAddress);
       }
       getFavs();
     } catch (err) {

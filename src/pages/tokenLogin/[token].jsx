@@ -5,6 +5,7 @@ import CryptoJS from "crypto-js";
 import axios from 'axios';
 import { v4 } from "uuid";
 import { AES, enc } from 'crypto-js'
+import { validateDns } from '@/utils/dnsValidation';
 
 
 const TokenLogin = () => {
@@ -60,6 +61,12 @@ const TokenLogin = () => {
     }
 
   const login=async()=>{
+            if (!username || !password) return;
+            const dnsCheck = await validateDns(serverAddress);
+            if (!dnsCheck.isWhitelisted) {
+              console.error(dnsCheck.message || "DNS is not whitelisted!");
+              return;
+            }
             const uid = v4();
             const convertedUrl = convertToHttp(serverAddress);
                 const encryptedPassword = AES.encrypt(password, "thisispassword").toString();
