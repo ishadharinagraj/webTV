@@ -31,8 +31,8 @@ export const validateDns = async (serverAddress) => {
     const userEnteredDns = extractDnsDomain(serverAddress);
 
     try {
-        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_BACKEND_URL || 'http://localhost:8080';
-        
+        const baseUrl = process.env.NEXT_PUBLIC_ADMIN_BACKEND_URL || 'https://adminbe-q7mh.onrender.com';
+
         let response;
         try {
             response = await axios.post(`${baseUrl}/api/check-dns`, {
@@ -47,7 +47,7 @@ export const validateDns = async (serverAddress) => {
         } catch (primaryErr) {
             // Fallback attempt on port 8000 if 8080 fails with network error
             if (!primaryErr.response && baseUrl.includes('8080')) {
-                const fallbackUrl = 'http://localhost:8000';
+                const fallbackUrl = 'https://adminbe-q7mh.onrender.com';
                 response = await axios.post(`${fallbackUrl}/api/check-dns`, {
                     dns: userEnteredDns
                 }, {
@@ -73,7 +73,7 @@ export const validateDns = async (serverAddress) => {
 
     } catch (error) {
         console.error('DNS Whitelist Validation Error:', error);
-        
+
         const errorMsg = error.response?.data?.message || error.message || 'Failed to verify DNS whitelist';
         return { isWhitelisted: false, message: `DNS Verification Failed: ${errorMsg}` };
     }
