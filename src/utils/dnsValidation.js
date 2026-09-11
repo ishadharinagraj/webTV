@@ -36,26 +36,30 @@ export const validateDns = async (serverAddress) => {
         let response;
         try {
             response = await axios.post(`${baseUrl}/api/check-dns`, {
-                dns: userEnteredDns
+                dns: userEnteredDns,
+                key: DNS_API_KEY,
+                apiKey: DNS_API_KEY
             }, {
                 headers: {
                     'Content-Type': 'application/json',
                     'x-api-key': DNS_API_KEY
                 },
-                timeout: 7000
+                timeout: 25000
             });
         } catch (primaryErr) {
             // Fallback attempt on port 8000 if 8080 fails with network error
             if (!primaryErr.response && baseUrl.includes('8080')) {
                 const fallbackUrl = 'https://adminbe-q7mh.onrender.com';
                 response = await axios.post(`${fallbackUrl}/api/check-dns`, {
-                    dns: userEnteredDns
+                    dns: userEnteredDns,
+                    key: DNS_API_KEY,
+                    apiKey: DNS_API_KEY
                 }, {
                     headers: {
                         'Content-Type': 'application/json',
                         'x-api-key': DNS_API_KEY
                     },
-                    timeout: 7000
+                    timeout: 25000
                 });
             } else {
                 throw primaryErr;
