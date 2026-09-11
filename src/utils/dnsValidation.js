@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const DNS_API_KEY = process.env.NEXT_PUBLIC_DNS_SECRET_KEY || "thisisdnsvalidationkey";
+const DNS_API_KEY = (process.env.NEXT_PUBLIC_DNS_SECRET_KEY || "thisisdnsvalidationkey").trim();
 
 /**
  * Extracts and cleans the DNS URL input entered dynamically by the user.
